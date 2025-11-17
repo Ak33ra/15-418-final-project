@@ -22,7 +22,7 @@ We are going to investigate the effects of multiple models inhabiting the same G
 ## Background
 Currently there are resources offered such as CUDA streams and NVIDIA's Multi-Process Service, which allows for concurrency on a single GPU, but do not offer any tools for the programmer for performance optimization. Multi tennacy on GPU's is a relevant issue with the age of AI and cloud compute, where a GPU is used for multiple kernel's out of necessity. There are a few papers that explore schedulers to optimiize performance, but they are a bit outdated.
 
-##The Challenge
+## The Challenge
 There is no correct solution for how to efficiently parallelize resources. It is difficult to predict how the hardware will scheudle the different kernels and specific limitations of the hardware, so ordering of kernels is challenging
 
 ## Goals and Deliverables
