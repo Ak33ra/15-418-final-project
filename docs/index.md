@@ -4,10 +4,12 @@ title: "Home"
 ---
 
 <nav>
+
   [Home](index.html) |
   [Proposal](proposal.html) |
   [Milestone](milestone.html) |
   [Final](final.html)
+
 </nav>
 
 # 15-418 Final Project: TODO
