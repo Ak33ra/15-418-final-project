@@ -10,9 +10,10 @@ title: "Home"
   [Final](final.html)
 </nav>
 
-# 15-418 Final Project: Fast XYZ on GPUs
+# 15-418 Final Project: TODO
 
 **Authors:** Tianyou Zhang, Akira van de Groenendaal
+
 **Course:** 15-418: Parallel Computer Architecture and Programming
 
 ---
