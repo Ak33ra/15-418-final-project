@@ -31,7 +31,7 @@ We want metrics and analysis that is able to provide benefical data for the rese
 Plan to Achieve: Create a full benchmark for how different sized models on different GPUs perform and find possible areas of improvement.
 There are multiple combinations of different models and GPUs that we want to analyze to see how performance metrics are impacted. 
 For each combination we will obtain the following metrics: latency, throughput, tail latency, slowdown, fairness, SM utliziation, TensorCore utilization, 
-bandwidth utilization.
+bandwidth utilization. <br>
 The combinations of models we will be testing on are small model, big model, small + big models.
 For these models we will also vary the the models that are arithmeticlly intensive and models that are bandwidth limited.
 We hope to find patterns in the different bottlenecks of the varying combinations of models, and provide key insights for how to improve performance.
@@ -40,7 +40,7 @@ This would be creating a wrapper of some sort for kernel launches and inference 
 
 ## Platform
 Tools: C++, Python, NVIDIA GeForce RTX 2080, NVIDIA V100, Other research GPUs, Nsight Systems. <br>
-Models: GPT-2, BERT, LLAMA, DeepSeek
+Models: GPT-2, BERT, LLAMA, DeepSeek <br>
 Most models can be run through C++ and Python, which have many libraries for gathering metris. We will will also be using a variety of different GPUs in order to explore how mult-tenancy can impact GPUs with varying power. We also want to run varying sized models to see how parameter count and model size affect multi-tenancy results.
 
 ## Schedule
