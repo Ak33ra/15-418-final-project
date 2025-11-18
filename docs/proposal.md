@@ -58,9 +58,9 @@ Hope to Achieve:
 ## Platform
 Tools: C++, Python, NVIDIA GeForce RTX 2080, NVIDIA V100, Other research GPUs like A100, Nsight Systems.
 
-Models: GPT-2, BERT, LLAMA, DeepSeek
+Models: GPT-2, BERT, LLAMA, DeepSeek, YOLO
 
-Most models can be run through C++ and Python, which have many libraries for gathering metris. We will will also be using a variety of different GPUs in order to explore how mult-tenancy can impact GPUs with varying power. We also want to run varying sized models to see how parameter count and model size affect multi-tenancy results.
+Most models can be run through C++ and Python, which have many libraries for gathering metrics. We will will also be using a variety of different GPUs in order to explore how mult-tenancy can impact GPUs with varying power. We also want to run varying sized models to see how parameter count and model size affect multi-tenancy results. The models that we chose vary in size and use cases, which will allow for more complex analysis and experiments for real world use cases.
 
 Using GPUs is the natural choice since most models in deployment run on GPUs and utilize resources like Tensor Cores and SMs. Additionally, Nvidia's tooling provides good visibility into kernel-level interactions.
 
