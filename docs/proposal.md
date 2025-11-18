@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Project Proposal"
+title: "Multi Model Tenancy Performance on GPUs"
 ---
 
 [Home](index.html) |
@@ -30,7 +30,8 @@ We want metrics and analysis that is able to provide benefical data for the rese
 ## Goals and Deliverables
 Plan to Achieve: Create a full benchmark for how different sized models on different GPUs perform and find possible areas of improvement.
 There are multiple combinations of different models and GPUs that we want to analyze to see how performance metrics are impacted. 
-For each combination we will obtain the following metrics: latency, throughput, tail latency, slowdown, fairness, SM utliziation, TensorCore utilization, bandwidth utilization.
+For each combination we will obtain the following metrics: latency, throughput, tail latency, slowdown, fairness, SM utliziation, TensorCore utilization, 
+bandwidth utilization.
 The combinations of models we will be testing on are small model, big model, small + big models.
 For these models we will also vary the the models that are arithmeticlly intensive and models that are bandwidth limited.
 We hope to find patterns in the different bottlenecks of the varying combinations of models, and provide key insights for how to improve performance.
