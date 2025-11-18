@@ -42,6 +42,7 @@ We want comprehensive metrics and analysis that is able to provide beneficial da
 
 ## Goals and Deliverables
 Plan to Achieve
+- Use PyTorch multi-process setup
 - Create a full benchmark for how different sized models on different GPUs perform and find possible areas of improvement.
 - There are multiple combinations of different models and GPUs that we want to analyze to see how performance metrics are impacted.
 - For each combination we will obtain the following metrics: latency, throughput, tail latency, slowdown, fairness, SM utliziation, TensorCore utilization, bandwidth utilization.
@@ -50,6 +51,7 @@ Plan to Achieve
 - We hope to find patterns in the different bottlenecks of the varying combinations of models, and provide key insights for how to improve performance. Specifically, we want to find patterns for how the GPU usage and model performance can be optimized in terms of efficiency and latency, which are key metrics for real world metrics. Some questions that we hope to find answers for what are key bottlenecks that programmers need to watch out for, and what are posssible research areas for improving performance.
 
 Hope to Achieve:
+- Use vLLM for inference serving
 - Create a scheduler or theoretical scheduler for the models on different GPUs to optimize GPU utilization and performance that controls launch order or batch grouping. This would be creating a wrapper of some sort for kernel launches and inference handling, which would allow for more optimized usage of the GPU. The scheduler would be optimized for multi model inference on a single GPU. See how this compares to default CUDA.
 - Predictive modeling via a queueing-based model to estimate interference
 
