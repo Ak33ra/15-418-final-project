@@ -8,9 +8,9 @@ title: "Home"
 [Milestone](milestone.html) |
 [Final](final.html)
 
-# 15-418 Final Project: TODO
+# 15-418 Final Project: Multi Model Tenancy Performance on GPUs
 
-**Authors:** Tianyou Zhang, Akira van de Groenendaal
+**Authors:** Akira van de Groenendaal, Tianyou Zhang
 
 **Course:** 15-418: Parallel Computer Architecture and Programming
 
@@ -18,7 +18,7 @@ title: "Home"
 
 ## Overview
 
-TODO
+How does multi tenancy affect GPU performance and utilization?
 
 ---
 
