@@ -17,20 +17,32 @@ title: "Project Proposal"
 
 ## Summary
 
-We are going to investigate the effects of multiple models inhabiting the same GPU. We will look at how performance metrics such as throughput, latency, slowdown, and load change as a function of number and size (batches, parameter count, etc) of models. We will explore how different resource intensive kernels perform on a shared GPU. Specifically we will investigate the interactions and potential conflicts between compute intensive and memory intensive programs. Another question to think about is which models benefit or suffer more from this setup?
+We are going to investigate the effects of multiple models inhabiting the same GPU. We will look at how performance metrics such as throughput, latency, slowdown, and load change as a function of number and size (batches, parameter count, etc) of models. Another question to think about is which models benefit or suffer more from this setup?
 
 ## Background
-Currently there are resources offered such as CUDA streams and NVIDIA's Multi-Process Service, which allows for concurrency on a single GPU, but do not offer any tools for the programmer for performance optimization. Multi tennacy on GPU's is a relevant issue with the age of AI and cloud compute, where a GPU is used for multiple kernel's out of necessity. There are a few papers that explore schedulers to optimiize performance, but they are a bit outdated.
+With the age of AI and cloud computing it is very common for multiple models to be running on the same GPU. With edge computing resources can be limited, so multiple models are forced to run on the same GPU. Ideally the resources would be efficiently utilized, but this is still an developing research area for how to concurrently run models on the same device. There are tools such as CUDA Streams and MPS, which allow programmers to have concurrent kernels, but it provides little benefit for the programmer to efficiently run multiple kernels.
+
 
 ## The Challenge
-There is no correct solution for how to efficiently parallelize resources. It is difficult to predict how the hardware will scheudle the different kernels and specific limitations of the hardware, so ordering of kernels is challenging
+This is a current research problem for how to efficiently utilize all of the resources on a GPU while maintaining performance metrics. We do not have an experience in optimizing machine learning model performance on GPUs. <br>
+We want metrics and analysis that is able to provide benefical data for the research field. 
 
 ## Goals and Deliverables
-Plan to Achieve: Create a full benchmark for how different types of kernels interact and affect different performance metrics. 
-Hope to Achieve: Create a scheduler to help efficiently queue kerenels and optimize hardware utilization.
+Plan to Achieve: Create a full benchmark for how different sized models on different GPUs perform and find possible areas of improvement.
+There are multiple combinations of different models and GPUs that we want to analyze to see how performance metrics are impacted. 
+For each combination we will obtain the following metrics: latency, throughput, tail latency, slowdown, fairness, SM utliziation, TensorCore utilization, bandwidth utilization.
+The combinations of models we will be testing on are small model, big model, small + big models.
+For these models we will also vary the the models that are arithmeticlly intensive and models that are bandwidth limited.
+We hope to find patterns in the different bottlenecks of the varying combinations of models, and provide key insights for how to improve performance.
+Hope to Achieve: Create a scheduler or theoretical schedular for the models on different GPUs to optimize GPU utilization and performance.
+This would be creating a wrapper of some sort for kernel launches and inference handling, which would allow for more optimized usage of the GPU.
 
 ## Platform
-CUDA, C++, NVIDIA GeForce RTX 2080, add the psc machine 
-Both are commonly used languages for writing parallel code. NVIDIA is a very widly used hardware.
+Tools: C++, Python, NVIDIA GeForce RTX 2080, NVIDIA V100, Other research GPUs, Nsight Systems. <br>
+Models: GPT-2, BERT, LLAMA, DeepSeek
+Most models can be run through C++ and Python, which have many libraries for gathering metris. We will will also be using a variety of different GPUs in order to explore how mult-tenancy can impact GPUs with varying power. We also want to run varying sized models to see how parameter count and model size affect multi-tenancy results.
 
 ## Schedule
+Week of Nov 17th: Explore research in this area and understand how to run and benchmark the different models Understand how to use MPS and running multiple models with batch requests. <br>
+Week of Nov 24th: Obtain different benchmarks for the models <br>
+Week of Dec 1st: Analyze the data and find possible areas of optimization. Possibly create scheduler or scheduling ideas. <br>
