@@ -10,4 +10,10 @@ https://ak33ra.github.io/15-418-final-project/proposal.html
 4. Treat `src` as a package by running `pip install -e .` in the root directory with the conda env active
 5. From anywhere, you can use `from multitenant import _` to access source code and run scripts/analysis
 
-Alternatively to conda, you can install the env using `pip install -r requirements.txt`
+### Alternatives
+
+Conda takes up a large amount of disk space and is impractical for AFS, so consider [micromamba](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html). 
+
+Install it and run `micromamba env create -f environment.yml`.
+
+Alternatively to conda, you can install the env using `pip install -r requirements.txt`.
