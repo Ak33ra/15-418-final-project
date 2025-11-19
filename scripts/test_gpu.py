@@ -2,7 +2,6 @@
 Run to see if GPU is available
 """
 
-
 import torch
 
 print("PyTorch:", torch.__version__)
