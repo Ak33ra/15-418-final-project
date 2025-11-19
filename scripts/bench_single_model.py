@@ -13,7 +13,7 @@ Usage:
 
 import argparse
 
-from mps_multitenant.runners.single_model_runner import (
+from multitenant.single_model_runner import (
     SingleModelConfig,
     run_single_model,
 )
