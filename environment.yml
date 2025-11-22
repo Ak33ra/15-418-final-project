@@ -7,16 +7,20 @@ channels:
 dependencies:
   - python=3.11
   - pip>=23.0
-  - pytorch-cuda=12.1 
+  - pytorch-cuda=12.1
   - pytorch
   - torchvision
+  - conda-forge::pillow
+  - conda-forge::libtiff
+  - numpy
+  - scipy
   - pip:
       - transformers>=4.40
       - accelerate>=0.30
       - sentencepiece
       - datasets
       - matplotlib
-      - seaborn
       - pandas
       - tqdm
+      - seaborn
 
