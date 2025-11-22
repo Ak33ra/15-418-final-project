@@ -17,3 +17,9 @@ Conda takes up a large amount of disk space and is impractical for AFS, so consi
 Install it and run `micromamba env create -f environment.yml`.
 
 Alternatively to conda, you can install the env using `pip install -r requirements.txt`.
+
+## Useful Links
+
+[LLM benchmarking fundamental concepts](https://developer.nvidia.com/blog/llm-benchmarking-fundamental-concepts/)
+
+https://apxml.com/courses/quantized-llm-deployment/chapter-3-performance-evaluation-quantized-llms/measuring-inference-latency-throughput
