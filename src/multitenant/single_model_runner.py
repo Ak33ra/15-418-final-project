@@ -7,34 +7,11 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 from statistics import mean
 from typing import Tuple, List
+from data.single_model_config import SingleModelConfig
+from data.single_model_result import SingleModelResult
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, PreTrainedModel, PreTrainedTokenizerBase
-
-
-@dataclass
-class SingleModelConfig:
-    model_name: str = "distilgpt2"
-    batch_size: int = 8
-    seq_len: int = 128
-    num_warmup: int = 10
-    num_iters: int = 100
-    device: str = "cuda"
-    out_dir: str = "experiments/logs"
-    tag: str = "solo"
-
-
-@dataclass
-class SingleModelResult:
-    avg_ms: float
-    p50_ms: float
-    p90_ms: float
-    p95_ms: float
-    p99_ms: float
-    throughput_tokens_per_s: float
-    latencies_ms: List[float]
-    config: SingleModelConfig
-
 
 def load_model_and_tokenizer(
     model_name: str, device: torch.device
