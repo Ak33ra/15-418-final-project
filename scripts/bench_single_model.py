@@ -48,6 +48,8 @@ def parse_args() -> argparse.Namespace:
                     help="Directory to write latency logs")
     ap.add_argument("--tag", type=str, default="solo",
                     help="Tag to include in output filenames")
+    ap.add_argument("--no-save",type=bool, default=False,
+                     help="Whether or not to write metrics to out_dir")
     return ap.parse_args()
 
 
@@ -80,7 +82,7 @@ def main() -> None:
 
     print(f"out dir: {cfg.out_dir}")
 
-    result = run_single_model(cfg)
+    result = run_single_model(cfg, args.no_save)
 
     print("\n=== Summary (from script) ===")
     print(f"Model:      {cfg.model_name}")
