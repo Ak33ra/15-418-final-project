@@ -1,0 +1,14 @@
+avg_ms=6.152519679069519
+p50_ms=6.151167869567871
+p90_ms=6.1624321937561035
+p95_ms=6.169600009918213
+p99_ms=6.2320637702941895
+throughput_tokens_per_s=83217.93780551267
+config_model_name=distilgpt2
+config_batch_size=4
+config_seq_len=128
+config_num_warmup=10
+config_num_iters=100
+config_device=cuda
+config_out_dir=experiments/logs/no_mps/
+config_tag=solo

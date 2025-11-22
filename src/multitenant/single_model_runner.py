@@ -57,7 +57,7 @@ def _percentile(sorted_vals: List[float], q: float) -> float:
     return sorted_vals[idx]
 
 
-def run_single_model(config: SingleModelConfig) -> SingleModelResult:
+def run_single_model(config: SingleModelConfig, no_save: bool) -> SingleModelResult:
     device = torch.device(config.device)
     out_dir = Path(config.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -121,6 +121,8 @@ def run_single_model(config: SingleModelConfig) -> SingleModelResult:
         config=config,
     )
 
+    if no_save:
+        return result
     # Write files
     base = (
         f"{config.tag}_"
