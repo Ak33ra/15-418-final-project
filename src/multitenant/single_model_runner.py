@@ -101,14 +101,22 @@ def run_single_model(config: SingleModelConfig) -> SingleModelResult:
     # Timed loop
     print(f"[run] {config.num_iters} timed iterations...")
     latencies_ms: List[float] = []
+
+    # Time with CUDA events
+    start_event = torch.cuda.Event(enable_timing=True)
+    end_event = torch.cuda.Event(enable_timing=True)
+
     with torch.no_grad():
         for i in range(config.num_iters):
-            t0 = time.perf_counter()
+            #t0 = time.perf_counter()
+            start_event.record()
             _ = model(input_ids=input_ids, attention_mask=attention_mask)
+            end_event.record()
             if device.type == "cuda":
                 torch.cuda.synchronize()
-            t1 = time.perf_counter()
-            lat_ms = (t1 - t0) * 1e3
+            #t1 = time.perf_counter()
+            #lat_ms = (t1 - t0) * 1e3
+            lat_ms = start_event.elapsed_time(end_event)
             latencies_ms.append(lat_ms)
 
             if (i + 1) % max(1, config.num_iters // 10) == 0:
