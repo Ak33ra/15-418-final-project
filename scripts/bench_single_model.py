@@ -58,11 +58,11 @@ def main() -> None:
     Prints summary of performance metrics to stdout and writes results to out_dir.
     """
     args = parse_args()
-    if args.config is not None:
+    if args.config:
         cfg_path = Path(args.config)
         with cfg_path.open(mode="r", encoding="utf-8") as f:
             cfg_yaml = yaml.safe_load(f)
-        single_model_dict = cfg_yaml.get("single model", {})
+        single_model_dict = cfg_yaml.get("single_model", {})
         cfg = SingleModelConfig(**single_model_dict)
         print(f"[bench] Loaded config from {cfg_path}")
     else:
@@ -77,6 +77,8 @@ def main() -> None:
             tag=args.tag,
         )
         print("[bench] Using CLI arguments for config")
+
+    print(f"out dir: {cfg.out_dir}")
 
     result = run_single_model(cfg)
 
