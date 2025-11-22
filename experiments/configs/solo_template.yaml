@@ -1,0 +1,11 @@
+experiment_name: "name here"
+
+single_model:
+  model_name: "model name"
+  batch_size: 8
+  seq_len: 128
+  num_warmup: 10
+  num_iters: 100
+  device: "cuda"
+  out_dir: "experiments/logs/template"
+  tag: "template"

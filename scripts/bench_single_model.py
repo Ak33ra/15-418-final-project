@@ -1,18 +1,27 @@
 #!/usr/bin/env python
 """
-CLI wrapper around mps_multitenant.runners.single_model_runner.run_single_model
+CLI wrapper around multitenant.runners.single_model_runner.run_single_model
 
 Usage:
+
+Run from YAML config:
+  python scripts/bench_single_model.py \
+      --config experiments/configs/distilgpt2_solo
+
+Run from CLI args:
   python scripts/bench_single_model.py \
       --model distilgpt2 \
       --batch-size 8 \
       --seq-len 128 \
       --num-iters 100 \
+      --out_dir experiments/logs \
       --tag solo_distilgpt2
 """
 
+from pathlib import Path
 import argparse
 import sys
+import yaml
 import torch
 
 from multitenant.single_model_runner import (
@@ -20,9 +29,13 @@ from multitenant.single_model_runner import (
     run_single_model,
 )
 
-
 def parse_args() -> argparse.Namespace:
+    """
+    Parses script CLI arguments
+    """
     ap = argparse.ArgumentParser()
+    ap.add_argument("--config", type=str, default=None,
+                    help="YAML config file for a single model experiment")
     ap.add_argument("--model", type=str, default="distilgpt2",
                     help="HF model name or local path")
     ap.add_argument("--batch-size", type=int, default=8)
@@ -39,21 +52,34 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    """
+    Loads and runs experiment and model config from YAML or command-line arguments.
+
+    Prints summary of performance metrics to stdout and writes results to out_dir.
+    """
     args = parse_args()
-    cfg = SingleModelConfig(
-        model_name=args.model,
-        batch_size=args.batch_size,
-        seq_len=args.seq_len,
-        num_warmup=args.num_warmup,
-        num_iters=args.num_iters,
-        device=args.device,
-        out_dir=args.out_dir,
-        tag=args.tag,
-    )
+    if args.config is not None:
+        cfg_path = Path(args.config)
+        with cfg_path.open(mode="r", encoding="utf-8") as f:
+            cfg_yaml = yaml.safe_load(f)
+        single_model_dict = cfg_yaml.get("single model", {})
+        cfg = SingleModelConfig(**single_model_dict)
+        print(f"[bench] Loaded config from {cfg_path}")
+    else:
+        cfg = SingleModelConfig(
+            model_name=args.model,
+            batch_size=args.batch_size,
+            seq_len=args.seq_len,
+            num_warmup=args.num_warmup,
+            num_iters=args.num_iters,
+            device=args.device,
+            out_dir=args.out_dir,
+            tag=args.tag,
+        )
+        print("[bench] Using CLI arguments for config")
 
     result = run_single_model(cfg)
 
-    # Print a compact summary to stdout (the files already have details)
     print("\n=== Summary (from script) ===")
     print(f"Model:      {cfg.model_name}")
     print(f"Tag:        {cfg.tag}")
@@ -61,13 +87,12 @@ def main() -> None:
     print(f"p95 (ms):   {result.p95_ms:.3f}")
     print(f"Throughput: {result.throughput_tokens_per_s:.2f} tokens/s")
 
+    # Sync CUDA to ensure process terminates
     if torch.cuda.is_available():
         torch.cuda.synchronize()
         torch.cuda.empty_cache()
 
     sys.exit(0)
 
-
 if __name__ == "__main__":
     main()
-
