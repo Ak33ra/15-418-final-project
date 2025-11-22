@@ -12,6 +12,8 @@ Usage:
 """
 
 import argparse
+import sys
+import torch
 
 from multitenant.single_model_runner import (
     SingleModelConfig,
@@ -58,6 +60,12 @@ def main() -> None:
     print(f"Avg (ms):   {result.avg_ms:.3f}")
     print(f"p95 (ms):   {result.p95_ms:.3f}")
     print(f"Throughput: {result.throughput_tokens_per_s:.2f} tokens/s")
+
+    if torch.cuda.is_available():
+        torch.cuda.synchronize()
+        torch.cuda.empty_cache()
+
+    sys.exit(0)
 
 
 if __name__ == "__main__":
