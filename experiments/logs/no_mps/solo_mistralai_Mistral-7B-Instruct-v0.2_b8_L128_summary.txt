@@ -1,0 +1,14 @@
+avg_ms=858.8279815673828
+p50_ms=861.475830078125
+p90_ms=863.6589965820312
+p95_ms=863.9344482421875
+p99_ms=864.6400146484375
+throughput_tokens_per_s=1192.3225861029518
+config_model_name=mistralai/Mistral-7B-Instruct-v0.2
+config_batch_size=8
+config_seq_len=128
+config_num_warmup=10
+config_num_iters=100
+config_device=cuda
+config_out_dir=experiments/logs/no_mps/
+config_tag=solo
