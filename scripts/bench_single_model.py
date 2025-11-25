@@ -16,9 +16,6 @@ Run from CLI args:
       --num-iters 100 \
       --out_dir experiments/logs \
       --tag solo_distilgpt2
-
-TODO:
-- implement barrier functionality to sync timed inference portion
 """
 
 from pathlib import Path
@@ -85,7 +82,8 @@ def main() -> None:
 
     print(f"out dir: {cfg.out_dir}")
 
-    result = run_single_model(cfg, args.no_save)
+    barrier = None
+    result = run_single_model(cfg, args.no_save, barrier)
 
     print("\n=== Summary (from script) ===")
     print(f"Model:      {cfg.model_name}")
