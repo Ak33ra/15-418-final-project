@@ -1,6 +1,7 @@
 # src/multitenant/single_model_runner.py
 
 from __future__ import annotations
+import multiprocessing as mp
 
 import time
 from dataclasses import dataclass, asdict
@@ -57,7 +58,7 @@ def _percentile(sorted_vals: List[float], q: float) -> float:
     return sorted_vals[idx]
 
 
-def run_single_model(config: SingleModelConfig, no_save: bool) -> SingleModelResult:
+def run_single_model(config: SingleModelConfig, no_save: bool, barrier: mp.Barrier) -> SingleModelResult:
     device = torch.device(config.device)
     out_dir = Path(config.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -83,16 +84,16 @@ def run_single_model(config: SingleModelConfig, no_save: bool) -> SingleModelRes
     start_event = torch.cuda.Event(enable_timing=True)
     end_event = torch.cuda.Event(enable_timing=True)
 
+    if barrier is not None:
+        barrier.wait()
+
     with torch.no_grad():
         for i in range(config.num_iters):
-            #t0 = time.perf_counter()
             start_event.record()
             _ = model(input_ids=input_ids, attention_mask=attention_mask)
             end_event.record()
             if device.type == "cuda":
                 torch.cuda.synchronize()
-            #t1 = time.perf_counter()
-            #lat_ms = (t1 - t0) * 1e3
             lat_ms = start_event.elapsed_time(end_event)
             latencies_ms.append(lat_ms)
 
