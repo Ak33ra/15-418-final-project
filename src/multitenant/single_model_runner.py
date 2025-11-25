@@ -58,7 +58,13 @@ def _percentile(sorted_vals: List[float], q: float) -> float:
     return sorted_vals[idx]
 
 
-def run_single_model(config: SingleModelConfig, no_save: bool, barrier: mp.Barrier) -> SingleModelResult:
+def run_single_model(config: SingleModelConfig,
+                     no_save: bool,
+                     barrier: mp.Barrier,
+                     verbose: bool) -> SingleModelResult:
+    """
+    TODO
+    """
     device = torch.device(config.device)
     out_dir = Path(config.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -97,8 +103,11 @@ def run_single_model(config: SingleModelConfig, no_save: bool, barrier: mp.Barri
             lat_ms = start_event.elapsed_time(end_event)
             latencies_ms.append(lat_ms)
 
-            if (i + 1) % max(1, config.num_iters // 10) == 0:
+            if (i + 1) % max(1, config.num_iters // 10) == 0 and verbose:
                 print(f"  iter {i+1}/{config.num_iters}: {lat_ms:.3f} ms")
+
+    if barrier is not None:
+        barrier.wait()
 
     latencies_ms.sort()
     avg = mean(latencies_ms)
