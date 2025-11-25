@@ -50,6 +50,7 @@ def parse_args() -> argparse.Namespace:
                     help="Tag to include in output filenames")
     ap.add_argument("--no-save",type=bool, default=False,
                      help="Whether or not to write metrics to out_dir")
+    ap.add_argument("--verbose",type=bool, default=False)
     return ap.parse_args()
 
 
@@ -83,14 +84,15 @@ def main() -> None:
     print(f"out dir: {cfg.out_dir}")
 
     barrier = None
-    result = run_single_model(cfg, args.no_save, barrier)
+    result = run_single_model(cfg, args.no_save, barrier, args.verbose)
 
-    print("\n=== Summary (from script) ===")
-    print(f"Model:      {cfg.model_name}")
-    print(f"Tag:        {cfg.tag}")
-    print(f"Avg (ms):   {result.avg_ms:.3f}")
-    print(f"p95 (ms):   {result.p95_ms:.3f}")
-    print(f"Throughput: {result.throughput_tokens_per_s:.2f} tokens/s")
+    if args.verbose:
+        print("\n=== Summary (from script) ===")
+        print(f"Model:      {cfg.model_name}")
+        print(f"Tag:        {cfg.tag}")
+        print(f"Avg (ms):   {result.avg_ms:.3f}")
+        print(f"p95 (ms):   {result.p95_ms:.3f}")
+        print(f"Throughput: {result.throughput_tokens_per_s:.2f} tokens/s")
 
     # Sync CUDA to ensure process terminates
     if torch.cuda.is_available():

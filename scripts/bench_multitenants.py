@@ -29,31 +29,65 @@ import yaml
 from mps_multitenant.runners.single_model_runner import SingleModelConfig, run_single_model
 
 def start_mps():
-    pass
+    """
+    Starts MPS daemon.
+    """
+    print("[driver] Starting MPS.")
 
 def stop_mps():
-    pass
+    """
+    Stops MPS daemon.
+    """
+    print("[driver] Stopping MPS.")
 
 def parse_args():
+    """
+    Create commandline argument parser and return parsed arguments.
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", type=str, required=True)
     ap.add_argument("--no-save", type=bool, default=False)
+    ap.add_argument("--verbose", type=bool, default=False)
     return ap.parse_args()
 
-def tenant_entry(cfg, no_save, barrier):
+def tenant_entry(cfg, no_save, barrier, verbose):
     """
     Wrapper to act as entry point for child processes into the single model runner.
     """
-    run_single_model(cfg, no_save, barrier)
+    run_single_model(cfg, no_save, barrier, verbose)
 
 def main():
-    args = parse_args()
+    """
+    Benchmarks performance of models under multitenancy.
 
-    tenants = []
-    processes = []
+    Arguments:
+        - Path to YAML experiment config file
+        - (Optional) Boolean that specifies whether or not to write experiment results
+
+    Prints performance summary for each model.
+
+    By default, writes performance data to the out directory specified in the config file.
+    """
+    args = parse_args()
+    with open(args.config, mode="r", encoding="utf-8") as f:
+        experiment = yaml.safe_load(f)
+
+    # Parse config file
+    experiment_name = experiment["experiment_name"]
+    tenants = experiment["tenants"]
+    mps_on = experiment.get("mps", False)
+    #sleep_duration = int(experiment.get("duration", 120))
+
+    # Make experiment directory
+    experiment_dir = Path(experiment_name) #TODO
+    experiment_dir.mkdir(parents = True, exist_ok = True)
+
+    if mps_on:
+        start_mps()
 
     barrier = mp.Barrier(len(tenants) + 1)
 
+    processes = []
     try:
         for t in tenants:
             cfg = SingleModelConfig(
@@ -63,22 +97,30 @@ def main():
                 num_warmup=t.get("num_warmup", 10),
                 num_iters = t.get("num_iters", 200),
                 device = t.get("device", "cuda"),
-                out_dir = str(exp_dir / t["name"]),
+                out_dir = str(experiment_dir / t["name"]),
                 tag = t["name"]
             )
-            p = mp.Process(target = tenant_entry, args=(cfg, False, barrier))
+            p = mp.Process(target = tenant_entry, args=(cfg, args.no_save, barrier, args.verbose))
             p.start()
             processes.append(p)
+        print("[driver] Waiting for warmups to finish...")
+        barrier.wait() # Start barrier
+        print("[driver] Models executing timed run.")
+        barrier.wait() # End barrier
+        if args.verbose:
+            # print summary results for each model
+            pass
+
     finally:
-        # Cleanup
-        print("[driver] terminating tenants")
+        print("[driver] Cleaning up and terminating child processes.")
         for p in processes:
             if p.is_alive():
                 p.terminate()
         for p in processes:
             p.join(timeout=5)
-        # also stop mps
-        print("[driver] cleanup done")
+        if mps_on:
+            stop_mps()
+        print("[driver] Cleanup done.")
 
 if __name__ == "__main__":
     mp.set_start_method("spawn", force = True)
