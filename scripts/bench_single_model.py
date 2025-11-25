@@ -16,6 +16,9 @@ Run from CLI args:
       --num-iters 100 \
       --out_dir experiments/logs \
       --tag solo_distilgpt2
+
+TODO:
+- implement barrier functionality to sync timed inference portion
 """
 
 from pathlib import Path
