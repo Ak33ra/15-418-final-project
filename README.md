@@ -23,3 +23,23 @@ Alternatively to conda, you can install the env using `pip install -r requiremen
 [LLM benchmarking fundamental concepts](https://developer.nvidia.com/blog/llm-benchmarking-fundamental-concepts/)
 
 https://apxml.com/courses/quantized-llm-deployment/chapter-3-performance-evaluation-quantized-llms/measuring-inference-latency-throughput
+
+## Config Format
+
+Store experiment parameters, such as warmup name and number of iterations, in YAML config files for easier running and reproductibility.
+
+See `configs/solo_template.yaml` for the expected format when benchmarking an individual model.
+
+See `configs/multitenant_template.yaml` for the expected format of a multitenant experiment.
+
+## Data Format
+
+Each experiment should create a new directory for organization. An explicit out_dir should be provided if you don't want to override old results of an identical experiment.
+
+For each model in the experiment, we create a jsonl file in the experiment directory. This will track events per model and report its performance metrics.
+
+The YAML config used should be copied into the experiment data folder.
+
+## Data Analysis
+
+In the data analysis script, the config file or experiment folder should be passed in. From there, the script should be able to access the appropriate directory and jsonl files in order to make plots, and output them in the `plots` directory.
