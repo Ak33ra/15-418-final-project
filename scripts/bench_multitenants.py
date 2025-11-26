@@ -113,9 +113,9 @@ def main():
 
     finally:
         print("[driver] Cleaning up and terminating child processes.")
-        for p in processes:
-            if p.is_alive():
-                p.terminate()
+        #for p in processes:
+        #    if p.is_alive():
+        #        p.terminate()
         for p in processes:
             p.join(timeout=5)
         if mps_on:
