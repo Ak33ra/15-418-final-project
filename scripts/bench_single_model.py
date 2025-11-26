@@ -16,6 +16,7 @@ Run from CLI args:
       --num-iters 100 \
       --out_dir experiments/logs \
       --tag solo_distilgpt2
+TODO: change output path to data folder
 """
 
 from pathlib import Path
