@@ -98,7 +98,7 @@ def main():
                 num_warmup=t.get("num_warmup", 10),
                 num_iters = t.get("num_iters", 200),
                 device = experiment.get("device", "cuda"),
-                out_dir = str(data_dir),
+                out_dir = str(data_dir / t["name"]),
                 tag = t["name"]
             )
             p = mp.Process(target = tenant_entry, args=(cfg, args.no_save, barrier, args.verbose))
@@ -108,8 +108,8 @@ def main():
         barrier.wait() # Start barrier
         print("[driver] Models executing timed run.")
         barrier.wait() # End barrier
-        if args.verbose:
-            pass
+        print("[driver] Models compiling metrics.")
+        barrier.wait()
 
     finally:
         print("[driver] Cleaning up and terminating child processes.")

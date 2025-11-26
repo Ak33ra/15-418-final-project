@@ -82,9 +82,6 @@ def run_single_model(config: SingleModelConfig,
     if device.type == "cuda":
         torch.cuda.synchronize()
 
-    # Timed loop
-    print(f"[run] {config.num_iters} timed iterations...")
-    latencies_ms: List[float] = []
 
     # Time with CUDA events
     start_event = torch.cuda.Event(enable_timing=True)
@@ -92,6 +89,10 @@ def run_single_model(config: SingleModelConfig,
 
     if barrier is not None:
         barrier.wait()
+
+    # Timed loop
+    print(f"[run] {config.num_iters} timed iterations...")
+    latencies_ms: List[float] = []
 
     with torch.no_grad():
         for i in range(config.num_iters):
@@ -132,6 +133,8 @@ def run_single_model(config: SingleModelConfig,
     )
 
     if no_save:
+        if barrier is not None:
+            barrier.wait()
         return result
     # Write files
     base = (
@@ -141,6 +144,7 @@ def run_single_model(config: SingleModelConfig,
     )
     lat_path = out_dir / f"{base}_latencies_ms.csv"
     meta_path = out_dir / f"{base}_summary.txt"
+    print(lat_path)
 
     with lat_path.open("w") as f:
         for x in latencies_ms:
@@ -162,5 +166,6 @@ def run_single_model(config: SingleModelConfig,
     print(f"\n[write] Latencies → {lat_path}")
     print(f"[write] Summary   → {meta_path}")
 
+    if barrier is not None:
+        barrier.wait()
     return result
-
