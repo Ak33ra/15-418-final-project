@@ -40,6 +40,14 @@ For each model in the experiment, we create a jsonl file in the experiment direc
 
 The YAML config used should be copied into the experiment data folder.
 
+## Data Metrics
+- Latency
+- Throughput
+- GPU utilization
+- time to first token
+- time per output token
+
+
 ## Data Analysis
 
 In the data analysis script, the config file or experiment folder should be passed in. From there, the script should be able to access the appropriate directory and jsonl files in order to make plots, and output them in the `plots` directory.
