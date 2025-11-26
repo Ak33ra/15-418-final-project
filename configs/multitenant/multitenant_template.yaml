@@ -1,0 +1,20 @@
+experiment_name: "experiment name"
+mps: true/false
+sleep_duration: 120 #sleep duration in seconds
+device: "cuda"
+
+# TODO make sure this is consistent with scripts and solo model config format
+
+tenants:
+  - model_name: "model name as found on Hugging Face"
+    batch_size: 16
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - name: "mistral7b"
+    model: "mistralai/Mistral-7B-Instuct-v0.2"
+    batch_size: 8
+    seq_len: 512
+    num_iters: 200
+    num_warmup: 10
