@@ -5,14 +5,14 @@ https://ak33ra.github.io/15-418-final-project/proposal.html
 ## Setup
 
 1. Clone the repo
-2. Set up the environment with conda: `conda env create -f environment-yaml` 
+2. Set up the environment with conda: `conda env create -f environment-yaml`
 3. Activate with `conda activate mps-multitenant`
 4. Treat `src` as a package by running `pip install -e .` in the root directory with the conda env active
 5. From anywhere, you can use `from multitenant import _` to access source code and run scripts/analysis
 
 ### Alternatives
 
-Conda takes up a large amount of disk space and is impractical for AFS, so consider [micromamba](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html). 
+Conda takes up a large amount of disk space and is impractical for AFS, so consider [micromamba](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html).
 
 Install it and run `micromamba env create -f environment.yml`.
 
@@ -28,9 +28,9 @@ https://apxml.com/courses/quantized-llm-deployment/chapter-3-performance-evaluat
 
 Store experiment parameters, such as warmup name and number of iterations, in YAML config files for easier running and reproductibility.
 
-See `configs/solo_template.yaml` for the expected format when benchmarking an individual model.
+See `configs/solo/solo_template.yaml` for the expected format when benchmarking an individual model.
 
-See `configs/multitenant_template.yaml` for the expected format of a multitenant experiment.
+See `configs/multitenant/multitenant_template.yaml` for the expected format of a multitenant experiment.
 
 ## Data Format
 

@@ -50,7 +50,7 @@ def parse_args() -> argparse.Namespace:
                     help="Tag to include in output filenames")
     ap.add_argument("--no-save",type=bool, default=False,
                      help="Whether or not to write metrics to out_dir")
-    ap.add_argument("--verbose",type=bool, default=False)
+    ap.add_argument("--verbose",type=bool, default=True)
     return ap.parse_args()
 
 
