@@ -7,13 +7,14 @@ device: "cuda"
 
 tenants:
   - model_name: "model name as found on Hugging Face"
+    name: "name shorthand or same as above"
     batch_size: 16
     seq_len: 128
     num_iters: 200
     num_warmup: 10
 
-  - name: "mistral7b"
-    model: "mistralai/Mistral-7B-Instuct-v0.2"
+  - model_name: "mistralai/Mistral-7B-Instuct-v0.2"
+    name: "mistral7b"
     batch_size: 8
     seq_len: 512
     num_iters: 200

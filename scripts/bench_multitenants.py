@@ -26,7 +26,7 @@ import signal
 import time
 import yaml
 
-from mps_multitenant.runners.single_model_runner import SingleModelConfig, run_single_model
+from multitenant.single_model_runner import SingleModelConfig, run_single_model
 
 def start_mps():
     """
@@ -71,6 +71,7 @@ def main():
     args = parse_args()
     with open(args.config, mode="r", encoding="utf-8") as f:
         experiment = yaml.safe_load(f)
+    print("[driver] Opened config file.")
 
     # Parse config file
     experiment_name = experiment["experiment_name"]
@@ -79,8 +80,8 @@ def main():
     #sleep_duration = int(experiment.get("duration", 120))
 
     # Make experiment directory
-    experiment_dir = Path(experiment_name) #TODO
-    experiment_dir.mkdir(parents = True, exist_ok = True)
+    data_dir = Path("data") / experiment_name
+    data_dir.mkdir(parents = True, exist_ok = True)
 
     if mps_on:
         start_mps()
@@ -91,13 +92,13 @@ def main():
     try:
         for t in tenants:
             cfg = SingleModelConfig(
-                model_name = t["model"],
+                model_name = t["model_name"],
                 batch_size = t["batch_size"],
                 seq_len = t["seq_len"],
                 num_warmup=t.get("num_warmup", 10),
                 num_iters = t.get("num_iters", 200),
-                device = t.get("device", "cuda"),
-                out_dir = str(experiment_dir / t["name"]),
+                device = experiment.get("device", "cuda"),
+                out_dir = str(data_dir),
                 tag = t["name"]
             )
             p = mp.Process(target = tenant_entry, args=(cfg, args.no_save, barrier, args.verbose))
@@ -108,7 +109,6 @@ def main():
         print("[driver] Models executing timed run.")
         barrier.wait() # End barrier
         if args.verbose:
-            # print summary results for each model
             pass
 
     finally:
