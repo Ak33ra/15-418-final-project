@@ -1,0 +1,20 @@
+experiment_name: "distilGPT2_mistral7b_smallbatch"
+mps: false
+sleep_duration: 120 #sleep duration in seconds
+device: "cuda"
+
+
+tenants:
+  - model_name: "distilgpt2"
+    name: "distilgpt2"
+    batch_size: 4
+    seq_len: 16
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "mistralai/Mistral-7B-Instruct-v0.2"
+    name: "mistral7b"
+    batch_size: 4
+    seq_len: 16
+    num_iters: 200
+    num_warmup: 10
