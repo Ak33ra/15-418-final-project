@@ -1,0 +1,4 @@
+NOTES:
+
+When running on external GPU, might need to configure env to make it work with python version and all that stuff
+Lambda AI GPUs give sudo access and can run MPS
