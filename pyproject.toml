@@ -7,7 +7,7 @@ name = "multitenant"
 version = "0.1.0"
 description = "Multi-tenant GPU/MPS experiments for 15-418"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10" # Changed to 3.10 to work on rented GPUs
 
 [tool.setuptools]
 package-dir = {"" = "src"}
