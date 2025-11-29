@@ -1,5 +1,5 @@
-experiment_name: "distilGPT2_mistral7b_smallbatch"
-mps: False
+experiment_name: "mps_distilGPT2_mistral7b_smallbatch"
+mps: True
 sleep_duration: 120 #sleep duration in seconds
 device: "cuda"
 

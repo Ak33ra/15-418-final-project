@@ -33,12 +33,16 @@ def start_mps():
     Starts MPS daemon.
     """
     print("[driver] Starting MPS.")
+    os.environ["CUDA_MPS_PIPE_DIRECTORY"] = "/tmp/mps"
+    os.environ["CUDA_MPS_LOG_DIRECTORY"] = "/tmp/mps_log"
+    subprocess.run(["sudo", "nvidia-cuda-mps-control", "-d"], check=True)
 
 def stop_mps():
     """
     Stops MPS daemon.
     """
     print("[driver] Stopping MPS.")
+    subprocess.run(["bash", "-lc", "echo quit | sudo nvidia-cuda-mps-control"], check=False)
 
 def parse_args():
     """
@@ -77,7 +81,6 @@ def main():
     experiment_name = experiment["experiment_name"]
     tenants = experiment["tenants"]
     mps_on = experiment.get("mps", False)
-    #sleep_duration = int(experiment.get("duration", 120))
 
     # Make experiment directory
     data_dir = Path("data") / experiment_name
