@@ -26,7 +26,7 @@ https://apxml.com/courses/quantized-llm-deployment/chapter-3-performance-evaluat
 
 ## Config Format
 
-Store experiment parameters, such as warmup name and number of iterations, in YAML config files for easier running and reproductibility.
+Store experiment parameters (e.g. warmup, experiment name, number of iterations) in YAML config files for easier running and reproductibility.
 
 See `configs/solo/solo_template.yaml` for the expected format when benchmarking an individual model.
 
@@ -36,7 +36,7 @@ See `configs/multitenant/multitenant_template.yaml` for the expected format of a
 
 Each experiment should create a new directory for organization. An explicit out_dir should be provided if you don't want to override old results of an identical experiment.
 
-For each model in the experiment, we create a jsonl file in the experiment directory. This will track events per model and report its performance metrics.
+For each model in the experiment, we create a jsonl file in the experiment directory (TODO). This will track events per model and report its performance metrics.
 
 The YAML config used should be copied into the experiment data folder.
 
@@ -46,7 +46,6 @@ The YAML config used should be copied into the experiment data folder.
 - GPU utilization
 - time to first token
 - time per output token
-
 
 ## Data Analysis
 
