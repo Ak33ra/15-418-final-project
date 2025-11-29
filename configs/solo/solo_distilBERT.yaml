@@ -1,0 +1,11 @@
+experiment_name: "solo_distilBERT"
+
+single_model:
+  model_name: "distilbert-base-uncased"
+  name: "distilbert"
+  batch_size: 8
+  seq_len: 128
+  num_warmup: 10
+  num_iters: 100
+  device: "cuda"
+  tag: "solo"
