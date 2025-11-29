@@ -1,11 +1,11 @@
-experiment_name: "name here"
+experiment_name: "data output directory"
 
 single_model:
-  model_name: "model name"
+  model_name: "model anme as found on Hugging Face"
+  name: "shorthand or same as model_name"
   batch_size: 8
   seq_len: 128
   num_warmup: 10
   num_iters: 100
   device: "cuda"
-  out_dir: "experiments/logs/template"
   tag: "template"

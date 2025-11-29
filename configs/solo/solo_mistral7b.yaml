@@ -2,10 +2,10 @@ experiment_name: "solo_mistral7b"
 
 single_model:
   model_name: "mistralai/Mistral-7B-Instruct-v0.2"
+  name: "mistral7b"
   batch_size: 8
   seq_len: 128
   num_warmup: 10
   num_iters: 100
   device: "cuda"
-  out_dir: "experiments/logs/no_mps/"
   tag: "solo"
