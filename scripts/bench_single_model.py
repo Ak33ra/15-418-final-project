@@ -65,9 +65,23 @@ def main() -> None:
     if args.config:
         cfg_path = Path(args.config)
         with cfg_path.open(mode="r", encoding="utf-8") as f:
-            cfg_yaml = yaml.safe_load(f)
-        single_model_dict = cfg_yaml.get("single_model", {})
-        cfg = SingleModelConfig(**single_model_dict)
+            experiment = yaml.safe_load(f)
+        experiment_name = experiment["experiment_name"]
+        data_dir = Path("data") / experiment_name
+        data_dir.mkdir(parents = True, exist_ok = True)
+
+        # Create config from single model tenant in YAML file
+        t = experiment["single_model"]
+        cfg = SingleModelConfig(
+            model_name = t["model_name"],
+            batch_size = t["batch_size"],
+            seq_len = t["seq_len"],
+            num_warmup=t.get("num_warmup", 10),
+            num_iters = t.get("num_iters", 200),
+            device = experiment.get("device", "cuda"),
+            out_dir = str(data_dir / t["name"]),
+            tag = t["name"]
+        )
         print(f"[bench] Loaded config from {cfg_path}")
     else:
         cfg = SingleModelConfig(
