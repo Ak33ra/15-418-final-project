@@ -12,14 +12,29 @@ from data.single_model_config import SingleModelConfig
 from data.single_model_result import SingleModelResult
 
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, PreTrainedModel, PreTrainedTokenizerBase
+from transformers import (
+    AutoConfig,
+    AutoModel,
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    PreTrainedModel,
+    PreTrainedTokenizerBase,
+)
 
 def load_model_and_tokenizer(
     model_name: str, device: torch.device
 ) -> Tuple[PreTrainedModel, PreTrainedTokenizerBase]:
     print(f"[load] Loading model '{model_name}' on {device}...")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
+    # TODO fix this style
+    if model_name == "distilbert-base-uncased":
+        model = AutoModel.from_pretrained(
+            model_name,
+            dtype=torch.float16,
+        )
+    else:
+        model = AutoModelForCausalLM.from_pretrained(model_name)
+
     model.to(device)
     model.eval()
 
@@ -63,7 +78,7 @@ def run_single_model(config: SingleModelConfig,
                      barrier: mp.Barrier,
                      verbose: bool) -> SingleModelResult:
     """
-    TODO
+    docstring TODO
     """
     device = torch.device(config.device)
     out_dir = Path(config.out_dir)
