@@ -4,6 +4,8 @@ from __future__ import annotations
 import multiprocessing as mp
 
 import time
+import json
+import os
 from dataclasses import dataclass, asdict
 from pathlib import Path
 from statistics import mean
@@ -78,6 +80,15 @@ def _percentile(sorted_vals: List[float], q: float) -> float:
     idx = max(0, min(len(sorted_vals) - 1, int(q * len(sorted_vals)) - 1))
     return sorted_vals[idx]
 
+def write_json_event(jsonl_file, event: dict):
+    """
+    Write the json object specified by event to jsonl_file.
+    """
+    if jsonl_file is None:
+        return
+    json.dump(event, jsonl_file)
+    jsonl_file.write("\n")
+    jsonl_file.flush()
 
 def run_single_model(config: SingleModelConfig,
                      no_save: bool,
@@ -95,6 +106,12 @@ def run_single_model(config: SingleModelConfig,
         tokenizer, config.batch_size, config.seq_len, device
     )
 
+    jsonl_path = out_dir / "events.jsonl"
+    jsonl_file = None
+
+    if not no_save:
+        jsonl_file = jsonl_path.open("w")
+
     # Warmup
     print(f"[warmup] {config.num_warmup} iterations...")
     with torch.no_grad():
@@ -102,7 +119,6 @@ def run_single_model(config: SingleModelConfig,
             _ = model(input_ids=input_ids, attention_mask=attention_mask)
     if device.type == "cuda":
         torch.cuda.synchronize()
-
 
     # Time with CUDA events
     start_event = torch.cuda.Event(enable_timing=True)
@@ -125,6 +141,14 @@ def run_single_model(config: SingleModelConfig,
                 torch.cuda.synchronize()
             lat_ms = start_event.elapsed_time(end_event)
             latencies_ms.append(lat_ms)
+
+            # Per-iteration json event
+            write_json_event(jsonl_file,
+            {
+                "type": "iteration",
+                "iter": i,
+                "latency_ms": float(lat_ms),
+            })
 
             if (i + 1) % max(1, config.num_iters // 10) == 0 and verbose:
                 print(f"  iter {i+1}/{config.num_iters}: {lat_ms:.3f} ms")
