@@ -5,15 +5,6 @@ Driver script to run multitenant experiments.
 
 Uses multiprocess to spawn a child script for each tenant and coordinate them,
 ensuring timed events are coordinated.
-
-TODO: implement this whole file
-- document desired multitenant yaml config format
-- parse multitenant config file
-- for each tenant, spawn a child process and use script that runs a single model
-- implement barrier in single model script
-- sync all children at the timed inference portion
-- report metrics
-- cleanup child processes
 """
 
 import subprocess
@@ -66,7 +57,8 @@ def main():
 
     Arguments:
         - Path to YAML experiment config file
-        - (Optional) Boolean that specifies whether or not to write experiment results
+        - (Optional) Boolean no-save: if true, do not write results to output dir
+        - (Optional) Boolean verbose: prints intermediary results to stdout iff true
 
     Prints performance summary for each model.
 
@@ -116,9 +108,6 @@ def main():
 
     finally:
         print("[driver] Cleaning up and terminating child processes.")
-        #for p in processes:
-        #    if p.is_alive():
-        #        p.terminate()
         for p in processes:
             p.join(timeout=5)
         if mps_on:

@@ -24,10 +24,12 @@ from transformers import (
 def load_model_and_tokenizer(
     model_name: str, device: torch.device
 ) -> Tuple[PreTrainedModel, PreTrainedTokenizerBase]:
+    """
+    Loads model weights and appropriate tokenizer from HuggingFace.
+    """
     print(f"[load] Loading model '{model_name}' on {device}...")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    # TODO fix this style
-    if model_name == "distilbert-base-uncased":
+    if model_name == "distilbert-base-uncased": #TODO try to generalize this
         model = AutoModel.from_pretrained(
             model_name,
             dtype=torch.float16,
@@ -51,7 +53,9 @@ def make_synthetic_batch(
     seq_len: int,
     device: torch.device,
 ) -> Tuple[torch.Tensor, torch.Tensor]:
-    """Create a synthetic batch of token ids; no actual text needed."""
+    """
+    Create a synthetic batch of token ids; no actual text needed.
+    """
     vocab_size = tokenizer.vocab_size
     torch.manual_seed(0)
     input_ids = torch.randint(
@@ -66,7 +70,9 @@ def make_synthetic_batch(
 
 
 def _percentile(sorted_vals: List[float], q: float) -> float:
-    """q in [0,1]; sorted_vals must be sorted ascending."""
+    """
+    q in [0,1]; sorted_vals must be sorted ascending.
+    """
     if not sorted_vals:
         return float("nan")
     idx = max(0, min(len(sorted_vals) - 1, int(q * len(sorted_vals)) - 1))
@@ -78,7 +84,7 @@ def run_single_model(config: SingleModelConfig,
                      barrier: mp.Barrier,
                      verbose: bool) -> SingleModelResult:
     """
-    docstring TODO
+    Main routine that runs model on synthetic tokens and collects iterative results.
     """
     device = torch.device(config.device)
     out_dir = Path(config.out_dir)
@@ -102,6 +108,7 @@ def run_single_model(config: SingleModelConfig,
     start_event = torch.cuda.Event(enable_timing=True)
     end_event = torch.cuda.Event(enable_timing=True)
 
+    # Sync warmups
     if barrier is not None:
         barrier.wait()
 
@@ -122,6 +129,7 @@ def run_single_model(config: SingleModelConfig,
             if (i + 1) % max(1, config.num_iters // 10) == 0 and verbose:
                 print(f"  iter {i+1}/{config.num_iters}: {lat_ms:.3f} ms")
 
+    # Sync timed loop
     if barrier is not None:
         barrier.wait()
 
@@ -151,6 +159,7 @@ def run_single_model(config: SingleModelConfig,
         if barrier is not None:
             barrier.wait()
         return result
+
     # Write files
     base = (
         f"{config.tag}_"
@@ -181,6 +190,7 @@ def run_single_model(config: SingleModelConfig,
     print(f"\n[write] Latencies → {lat_path}")
     print(f"[write] Summary   → {meta_path}")
 
+    # Wait for models to summarize their results before being joined by driver
     if barrier is not None:
         barrier.wait()
     return result
