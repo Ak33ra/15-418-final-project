@@ -5,6 +5,9 @@ Driver script to run multitenant experiments.
 
 Uses multiprocess to spawn a child script for each tenant and coordinate them,
 ensuring timed events are coordinated.
+
+Example usage:
+    ./scripts/bench_multitenants.py --config {path to config file} --no-save False --verbose True
 """
 
 import subprocess
