@@ -23,6 +23,9 @@ Alternatively to conda, you can install the env using `pip install -r requiremen
 2. Run `./scripts/pip_setup.sh` to install necessary packages
 3. Perform desired benchmarks
 
+## Pushing from other devices
+Use personal access token
+
 ## Useful Links
 
 [LLM benchmarking fundamental concepts](https://developer.nvidia.com/blog/llm-benchmarking-fundamental-concepts/)
