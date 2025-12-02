@@ -18,6 +18,11 @@ Install it and run `micromamba env create -f environment.yml`.
 
 Alternatively to conda, you can install the env using `pip install -r requirements.txt`.
 
+## Running on Rented GPUs
+1. `chmod +x scripts/*`
+2. Run `./scripts/pip_setup.sh` to install necessary packages
+3. Perform desired benchmarks
+
 ## Useful Links
 
 [LLM benchmarking fundamental concepts](https://developer.nvidia.com/blog/llm-benchmarking-fundamental-concepts/)
