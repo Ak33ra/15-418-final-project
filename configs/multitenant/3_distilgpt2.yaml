@@ -1,0 +1,25 @@
+experiment_name: "3_distilgpt2_mps" # Name of data output directory
+mps: True
+sleep_duration: 120
+device: "cuda" # Currently only supports cuda
+
+
+tenants:
+  - model_name: "distilgpt2"
+    name: "distilgpt2_1" # Name of this model's directory in the output data
+    batch_size: 8
+    seq_len: 128
+    num_iters: 100
+    num_warmup: 10
+  - model_name: "distilgpt2"
+    name: "distilgpt2_2" # Name of this model's directory in the output data
+    batch_size: 8
+    seq_len: 128
+    num_iters: 100
+    num_warmup: 10
+  - model_name: "distilgpt2"
+    name: "distilgpt2_3" # Name of this model's directory in the output data
+    batch_size: 8
+    seq_len: 128
+    num_iters: 100
+    num_warmup: 10
