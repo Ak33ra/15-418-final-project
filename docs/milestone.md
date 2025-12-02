@@ -3,12 +3,10 @@ layout: default
 title: "Milestone"
 ---
 
-<nav>
-  [Home](index.html) |
-  [Proposal](proposal.html) |
-  [Milestone](milestone.html) |
-  [Final](final.html)
-</nav>
+[Home](index.html) |
+[Proposal](proposal.html) |
+[Milestone](milestone.html) |
+[Final](final.html)
 
 # Milestone Report
 
