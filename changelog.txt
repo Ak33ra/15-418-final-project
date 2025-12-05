@@ -2,3 +2,15 @@ NOTES:
 
 When running on external GPU, might need to configure env to make it work with python version and all that stuff
 Lambda AI GPUs give sudo access and can run MPS
+
+Possible issues and changes for the increase in latency between batches:
+The timer with event might be creating a long queue with large overhead
+Might need to clear cache or memory after batches in order to keep memory and cache issues, causing fragmentation
+Also, possible thermal effects for running long durations, which can decrease performacne
+
+A few approaches to the issue:
+create a warmup sequence to heatup the gpu for consistent testing
+test for longer iterations
+We might not need to necessarily clear the cache and memory if it is more realistic or something
+First test the timer and see if this changes performance
+Main concern is the spike at end of the iterations
