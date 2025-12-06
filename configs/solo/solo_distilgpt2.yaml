@@ -1,4 +1,4 @@
-experiment_name: "solo_distilgpt2"
+experiment_name: "solo_distilgpt2_b8_128"
 
 single_model:
   model_name: "distilgpt2"
