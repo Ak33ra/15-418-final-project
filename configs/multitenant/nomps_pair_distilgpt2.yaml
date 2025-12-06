@@ -1,5 +1,5 @@
-experiment_name: "pair_distilGPT2"
-mps: True
+experiment_name: "nomps_pair_distilGPT2"
+mps: False
 sleep_duration: 120 #sleep duration in seconds
 device: "cuda"
 

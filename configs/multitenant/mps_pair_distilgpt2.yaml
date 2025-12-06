@@ -7,14 +7,14 @@ device: "cuda"
 tenants:
   - model_name: "distilgpt2"
     name: "distilgpt2_1"
-    batch_size: 16
+    batch_size: 8
     seq_len: 128
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
 
   - model_name: "distilgpt2"
     name: "distilgpt2_2"
-    batch_size: 16
+    batch_size: 8
     seq_len: 128
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
