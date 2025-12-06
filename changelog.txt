@@ -14,3 +14,5 @@ test for longer iterations
 We might not need to necessarily clear the cache and memory if it is more realistic or something
 First test the timer and see if this changes performance
 Main concern is the spike at end of the iterations
+
+Possible Analysis Tools for comparing latency and throughput:
