@@ -1,17 +1,22 @@
 # src/multitenant/single_model_runner.py
+"""
+Loads and runs the target model and config as passed into run_single_model.
+This code should be wrapped and called via one of the benchmarking scripts.
+"""
 
 from __future__ import annotations
 import multiprocessing as mp
 
 import time
-import json
-import os
-from dataclasses import dataclass, asdict
+from dataclasses import asdict
 from pathlib import Path
 from statistics import mean
 from typing import Tuple, List
 from data.single_model_config import SingleModelConfig
 from data.single_model_result import SingleModelResult
+from data.write_events import (write_json_event,
+                               write_run_start,
+                               write_run_end)
 
 import torch
 from transformers import (
@@ -31,7 +36,7 @@ def load_model_and_tokenizer(
     """
     print(f"[load] Loading model '{model_name}' on {device}...")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    if model_name == "distilbert-base-uncased": #TODO try to generalize this
+    if model_name == "distilbert-base-uncased":
         model = AutoModel.from_pretrained(
             model_name,
             dtype=torch.float16,
@@ -80,16 +85,6 @@ def _percentile(sorted_vals: List[float], q: float) -> float:
     idx = max(0, min(len(sorted_vals) - 1, int(q * len(sorted_vals)) - 1))
     return sorted_vals[idx]
 
-def write_json_event(jsonl_file, event: dict):
-    """
-    Write the json object specified by event to jsonl_file.
-    """
-    if jsonl_file is None:
-        return
-    json.dump(event, jsonl_file)
-    jsonl_file.write("\n")
-    jsonl_file.flush()
-
 def run_single_model(config: SingleModelConfig,
                      no_save: bool,
                      barrier: mp.Barrier,
@@ -112,6 +107,8 @@ def run_single_model(config: SingleModelConfig,
     if not no_save:
         jsonl_file = jsonl_path.open("w")
 
+    write_run_start(jsonl_file, config)
+
     # Warmup
     print(f"[warmup] {config.num_warmup} iterations...")
     with torch.no_grad():
@@ -132,6 +129,9 @@ def run_single_model(config: SingleModelConfig,
     print(f"[run] {config.num_iters} timed iterations...")
     latencies_ms: List[float] = []
 
+    if device.type == "cuda":
+        torch.cuda.synchronize()
+    start_time = time.perf_counter()
     with torch.no_grad():
         for i in range(config.num_iters):
             start_event.record()
@@ -152,6 +152,9 @@ def run_single_model(config: SingleModelConfig,
 
             if (i + 1) % max(1, config.num_iters // 10) == 0 and verbose:
                 print(f"  iter {i+1}/{config.num_iters}: {lat_ms:.3f} ms")
+    if device.type == "cuda":
+        torch.cuda.synchronize()
+    end_time = time.perf_counter()
 
     # Sync timed loop
     if barrier is not None:
@@ -178,6 +181,15 @@ def run_single_model(config: SingleModelConfig,
         latencies_ms=latencies_ms,
         config=config,
     )
+
+    write_run_end(jsonl_file, config, result)
+    write_json_event(jsonl_file,
+        {
+            "type": "time_elapsed",
+            "sec": end_time - start_time
+        })
+    if jsonl_file is not None:
+        jsonl_file.close()
 
     if no_save:
         if barrier is not None:
