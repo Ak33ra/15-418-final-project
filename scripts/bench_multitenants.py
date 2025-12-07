@@ -99,7 +99,9 @@ def main():
                 out_dir = str(data_dir / t["name"]),
                 tag = t["name"]
             )
-            p = mp.Process(target = tenant_entry, args=(cfg, args.no_save, barrier, args.verbose))
+            p = mp.Process(target = tenant_entry,
+                           name = f"{t["name"]}",
+                           args = (cfg, args.no_save, barrier, args.verbose))
             p.start()
             processes.append(p)
         print("[driver] Waiting for warmups to finish...")
