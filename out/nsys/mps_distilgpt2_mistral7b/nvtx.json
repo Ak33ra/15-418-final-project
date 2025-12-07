@@ -1,0 +1,57 @@
+
+NOTICE: Existing SQLite export found: out/nsys/mps_distilgpt2_mistral7b//mps_distilgpt2_mistral7b.sqlite
+        It is assumed file was previously exported from: out/nsys/mps_distilgpt2_mistral7b//mps_distilgpt2_mistral7b.nsys-rep
+        Consider using --force-export=true if needed.
+
+Processing [out/nsys/mps_distilgpt2_mistral7b//mps_distilgpt2_mistral7b.sqlite] with [/home/export/avandegr/15-418-final-project/vendor/nsight-systems/opt/nvidia/nsight-systems-cli/2025.6.1/target-linux-x64/reports/nvtx_sum.py]... 
+[
+  {
+    "Time (%)": 92.3,
+    "Total Time (ns)": 170717022355,
+    "Instances": 1,
+    "Avg (ns)": 170717022355.0,
+    "Med (ns)": 170717022355.0,
+    "Min (ns)": 170717022355,
+    "Max (ns)": 170717022355,
+    "StdDev (ns)": 0.0,
+    "Style": "PushPop",
+    "Range": ":measure::mistralai/Mistral-7B-Instruct-v0.2"
+  },
+  {
+    "Time (%)": 4.4,
+    "Total Time (ns)": 8097843657,
+    "Instances": 1,
+    "Avg (ns)": 8097843657.0,
+    "Med (ns)": 8097843657.0,
+    "Min (ns)": 8097843657,
+    "Max (ns)": 8097843657,
+    "StdDev (ns)": 0.0,
+    "Style": "PushPop",
+    "Range": ":warmup::mistralai/Mistral-7B-Instruct-v0.2"
+  },
+  {
+    "Time (%)": 3.1,
+    "Total Time (ns)": 5715207073,
+    "Instances": 1,
+    "Avg (ns)": 5715207073.0,
+    "Med (ns)": 5715207073.0,
+    "Min (ns)": 5715207073,
+    "Max (ns)": 5715207073,
+    "StdDev (ns)": 0.0,
+    "Style": "PushPop",
+    "Range": ":measure::distilgpt2"
+  },
+  {
+    "Time (%)": 0.2,
+    "Total Time (ns)": 362423750,
+    "Instances": 1,
+    "Avg (ns)": 362423750.0,
+    "Med (ns)": 362423750.0,
+    "Min (ns)": 362423750,
+    "Max (ns)": 362423750,
+    "StdDev (ns)": 0.0,
+    "Style": "PushPop",
+    "Range": ":warmup::distilgpt2"
+  }
+]
+

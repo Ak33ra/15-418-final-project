@@ -1,0 +1,174 @@
+
+NOTICE: Existing SQLite export found: out/nsys/mps_pair_distilgpt2//mps_pair_distilgpt2.sqlite
+        It is assumed file was previously exported from: out/nsys/mps_pair_distilgpt2//mps_pair_distilgpt2.nsys-rep
+        Consider using --force-export=true if needed.
+
+Processing [out/nsys/mps_pair_distilgpt2//mps_pair_distilgpt2.sqlite] with [/home/export/avandegr/15-418-final-project/vendor/nsight-systems/opt/nvidia/nsight-systems-cli/2025.6.1/target-linux-x64/reports/cuda_api_sum.py]... 
+[
+  {
+    "Time (%)": 68.8,
+    "Total Time (ns)": 3530989633,
+    "Num Calls": 206,
+    "Avg (ns)": 17140726.4,
+    "Med (ns)": 17510899.5,
+    "Min (ns)": 2910,
+    "Max (ns)": 19645483,
+    "StdDev (ns)": 2456723.6,
+    "Name": "cudaDeviceSynchronize"
+  },
+  {
+    "Time (%)": 16.4,
+    "Total Time (ns)": 842671488,
+    "Num Calls": 396,
+    "Avg (ns)": 2127958.3,
+    "Med (ns)": 2049172.0,
+    "Min (ns)": 9910,
+    "Max (ns)": 26842221,
+    "StdDev (ns)": 4690750.9,
+    "Name": "cudaStreamSynchronize"
+  },
+  {
+    "Time (%)": 12.1,
+    "Total Time (ns)": 620584853,
+    "Num Calls": 27504,
+    "Avg (ns)": 22563.4,
+    "Med (ns)": 6850.0,
+    "Min (ns)": 3941,
+    "Max (ns)": 85824200,
+    "StdDev (ns)": 838020.4,
+    "Name": "cudaLaunchKernel"
+  },
+  {
+    "Time (%)": 1.8,
+    "Total Time (ns)": 90104649,
+    "Num Calls": 396,
+    "Avg (ns)": 227537.0,
+    "Med (ns)": 9770.0,
+    "Min (ns)": 4330,
+    "Max (ns)": 21597174,
+    "StdDev (ns)": 1471863.1,
+    "Name": "cudaMemcpyAsync"
+  },
+  {
+    "Time (%)": 0.6,
+    "Total Time (ns)": 28479823,
+    "Num Calls": 4,
+    "Avg (ns)": 7119955.8,
+    "Med (ns)": 7051814.5,
+    "Min (ns)": 2184584,
+    "Max (ns)": 12191610,
+    "StdDev (ns)": 5694875.2,
+    "Name": "cudaFree"
+  },
+  {
+    "Time (%)": 0.2,
+    "Total Time (ns)": 9726377,
+    "Num Calls": 62,
+    "Avg (ns)": 156877.0,
+    "Med (ns)": 145623.0,
+    "Min (ns)": 4821,
+    "Max (ns)": 544801,
+    "StdDev (ns)": 70577.8,
+    "Name": "cudaMalloc"
+  },
+  {
+    "Time (%)": 0.1,
+    "Total Time (ns)": 5855581,
+    "Num Calls": 2,
+    "Avg (ns)": 2927790.5,
+    "Med (ns)": 2927790.5,
+    "Min (ns)": 2070734,
+    "Max (ns)": 3784847,
+    "StdDev (ns)": 1212060.9,
+    "Name": "cudaGetDeviceProperties_v2_v12000"
+  },
+  {
+    "Time (%)": 0.1,
+    "Total Time (ns)": 3730236,
+    "Num Calls": 2,
+    "Avg (ns)": 1865118.0,
+    "Med (ns)": 1865118.0,
+    "Min (ns)": 1814467,
+    "Max (ns)": 1915769,
+    "StdDev (ns)": 71631.3,
+    "Name": "cudaHostAlloc"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 1964493,
+    "Num Calls": 400,
+    "Avg (ns)": 4911.2,
+    "Med (ns)": 5320.0,
+    "Min (ns)": 3410,
+    "Max (ns)": 21772,
+    "StdDev (ns)": 1413.1,
+    "Name": "cudaEventRecord"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 1437352,
+    "Num Calls": 1382,
+    "Avg (ns)": 1040.1,
+    "Med (ns)": 990.0,
+    "Min (ns)": 389,
+    "Max (ns)": 16830,
+    "StdDev (ns)": 678.4,
+    "Name": "cudaStreamIsCapturing_v10000"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 272790,
+    "Num Calls": 1532,
+    "Avg (ns)": 178.1,
+    "Med (ns)": 141.0,
+    "Min (ns)": 80,
+    "Max (ns)": 750,
+    "StdDev (ns)": 90.6,
+    "Name": "cuGetProcAddress_v2"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 64700,
+    "Num Calls": 40,
+    "Avg (ns)": 1617.5,
+    "Med (ns)": 305.0,
+    "Min (ns)": 270,
+    "Max (ns)": 15120,
+    "StdDev (ns)": 3272.7,
+    "Name": "cudaEventCreateWithFlags"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 6910,
+    "Num Calls": 4,
+    "Avg (ns)": 1727.5,
+    "Med (ns)": 1670.0,
+    "Min (ns)": 650,
+    "Max (ns)": 2920,
+    "StdDev (ns)": 1194.8,
+    "Name": "cudaEventDestroy"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 5543,
+    "Num Calls": 4,
+    "Avg (ns)": 1385.8,
+    "Med (ns)": 1221.0,
+    "Min (ns)": 960,
+    "Max (ns)": 2141,
+    "StdDev (ns)": 551.6,
+    "Name": "cuInit"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 1840,
+    "Num Calls": 6,
+    "Avg (ns)": 306.7,
+    "Med (ns)": 115.0,
+    "Min (ns)": 100,
+    "Max (ns)": 770,
+    "StdDev (ns)": 311.4,
+    "Name": "cuModuleGetLoadingMode"
+  }
+]
+
