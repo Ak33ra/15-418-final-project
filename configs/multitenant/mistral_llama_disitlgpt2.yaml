@@ -1,0 +1,26 @@
+experiment_name: "mistral_llama_distilgpt2"
+mps: True
+sleep_duration: 120
+device: "cuda"
+
+tenants:
+  - model_name: "mistralai/Mistral-7B-Instruct-v0.2"
+    name: "mistral7b"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "meta-llama/Llama-3.2-3B-Instruct"
+    name: "llama3.2_3b"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10

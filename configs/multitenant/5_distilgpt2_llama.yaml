@@ -1,0 +1,47 @@
+experiment_name: "5_distilgpt2_llama"
+mps: True
+sleep_duration: 120
+device: "cuda"
+
+tenants:
+  - model_name: "distilgpt2"
+    name: "distilgpt2_1"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_2"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_3"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_4"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_5"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "meta-llama/Llama-3.2-3B-Instruct"
+    name: "llama3.2_3b"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
