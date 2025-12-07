@@ -1,3 +1,0 @@
-Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Style,Range
-87.4,5287937279,2,2643968639.5,2643968639.5,2642409872,2645527407,2204430.1,PushPop,:measure::distilgpt2
-12.6,765479821,2,382739910.5,382739910.5,368736557,396743264,19803732.4,PushPop,:warmup::distilgpt2

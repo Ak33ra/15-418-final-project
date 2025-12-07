@@ -59,3 +59,8 @@ The YAML config used should be copied into the experiment data folder.
 ## Data Analysis
 
 In the data analysis script, the config file or experiment folder should be passed in. From there, the script should be able to access the appropriate directory and jsonl files in order to make plots, and output them in the `plots` directory.
+
+## TODO
+
+Evaluate usefulnes of Nsight, either integrate into experiment script or not.
+Make a large script to run all experiments. Afterwards, run it on rented GPU to get all needed experiments out of the way.

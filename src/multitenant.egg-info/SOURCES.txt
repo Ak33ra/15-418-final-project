@@ -3,6 +3,7 @@ pyproject.toml
 src/data/__init__.py
 src/data/single_model_config.py
 src/data/single_model_result.py
+src/data/write_events.py
 src/multitenant/__init__.py
 src/multitenant/single_model_runner.py
 src/multitenant.egg-info/PKG-INFO

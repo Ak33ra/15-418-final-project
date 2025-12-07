@@ -57,7 +57,8 @@ The YAML config used should be copied into the experiment data folder.
 
 ## Data Metrics
 - Latency
-- Throughput
+- Throughput per model in tokens/sec
+- GPU throughput: sum of model throughputs divided by max completion time (tokens/sec)
 - GPU utilization
 - time to first token
 - time per output token

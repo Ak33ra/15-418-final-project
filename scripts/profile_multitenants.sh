@@ -54,7 +54,6 @@ echo "[profile] Output prefix: $OUT_PREFIX"
 # -----------------------------
 # Run Nsight Systems
 # -----------------------------
-    # add below argument when running on sudo
     #--gpu-metrics-devices=all \
 nsys profile \
     -o "$OUT_PREFIX" \
