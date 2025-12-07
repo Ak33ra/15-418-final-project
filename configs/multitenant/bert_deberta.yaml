@@ -1,0 +1,19 @@
+experiment_name: "bert_deberta"
+mps: True
+sleep_duration: 120
+device: "cuda"
+
+tenants:
+  - model_name: "distilbert-base-uncased"
+    name: "distilbert"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "microsoft/deberta-v3-large"
+    name: "deberta_v3_large"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10

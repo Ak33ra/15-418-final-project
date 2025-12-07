@@ -1,0 +1,75 @@
+experiment_name: "10_distilgpt2"
+mps: True
+sleep_duration: 120
+device: "cuda"
+
+tenants:
+  - model_name: "distilgpt2"
+    name: "distilgpt2_1"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_2"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_3"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_4"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_5"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_6"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_7"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_8"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_9"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2_10"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10

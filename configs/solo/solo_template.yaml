@@ -1,7 +1,7 @@
 experiment_name: "data output directory"
 
 single_model:
-  model_name: "model anme as found on Hugging Face"
+  model_name: "model name as found on Hugging Face"
   name: "shorthand or same as model_name"
   batch_size: 8
   seq_len: 128

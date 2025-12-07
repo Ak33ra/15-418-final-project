@@ -1,8 +1,7 @@
-experiment_name: "distilGPT2_mistral7b"
+experiment_name: "gpt2_llama"
 mps: True
-sleep_duration: 120 #sleep duration in seconds
+sleep_duration: 120
 device: "cuda"
-
 
 tenants:
   - model_name: "distilgpt2"
@@ -12,8 +11,8 @@ tenants:
     num_iters: 200
     num_warmup: 10
 
-  - model_name: "mistralai/Mistral-7B-Instruct-v0.2"
-    name: "mistral7b"
+  - model_name: "meta-llama/Llama-3.2-3B-Instruct"
+    name: "llama3.2_3b"
     batch_size: 8
     seq_len: 128
     num_iters: 200

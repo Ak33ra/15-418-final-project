@@ -1,0 +1,11 @@
+experiment_name: "solo_llama"
+
+single_model:
+  model_name: "meta-llama/Llama-3.2-3B-Instruct"
+  name: "llama"
+  batch_size: 8
+  seq_len: 128
+  num_warmup: 10
+  num_iters: 100
+  device: "cuda"
+  tag: "solo"

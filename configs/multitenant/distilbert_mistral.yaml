@@ -1,12 +1,11 @@
-experiment_name: "distilGPT2_mistral7b"
+experiment_name: "distilbert_mistral"
 mps: True
-sleep_duration: 120 #sleep duration in seconds
+sleep_duration: 120
 device: "cuda"
 
-
 tenants:
-  - model_name: "distilgpt2"
-    name: "distilgpt2"
+  - model_name: "distilbert-base-uncased"
+    name: "distilbert"
     batch_size: 8
     seq_len: 128
     num_iters: 200

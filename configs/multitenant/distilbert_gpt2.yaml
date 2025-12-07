@@ -1,0 +1,19 @@
+experiment_name: "distilbert_gpt2"
+mps: True
+sleep_duration: 120
+device: "cuda"
+
+tenants:
+  - model_name: "distilbert-base-uncased"
+    name: "distilbert"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
+
+  - model_name: "distilgpt2"
+    name: "distilgpt2"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 200
+    num_warmup: 10
