@@ -100,7 +100,7 @@ def main():
                 tag = t["name"]
             )
             p = mp.Process(target = tenant_entry,
-                           name = f"{t["name"]}",
+                           name = str(t["name"]),
                            args = (cfg, args.no_save, barrier, args.verbose))
             p.start()
             processes.append(p)
