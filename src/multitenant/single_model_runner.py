@@ -19,6 +19,7 @@ from data.write_events import (write_json_event,
                                write_run_end)
 
 import torch
+import torch.cuda.nvtx as nvtx
 from transformers import (
     AutoConfig,
     AutoModel,
@@ -111,9 +112,11 @@ def run_single_model(config: SingleModelConfig,
 
     # Warmup
     print(f"[warmup] {config.num_warmup} iterations...")
+    nvtx.range_push(f"warmup::{config.model_name}")
     with torch.no_grad():
         for _ in range(config.num_warmup):
             _ = model(input_ids=input_ids, attention_mask=attention_mask)
+    nvtx.range_pop()
     if device.type == "cuda":
         torch.cuda.synchronize()
 
@@ -127,6 +130,7 @@ def run_single_model(config: SingleModelConfig,
 
     # Timed loop
     print(f"[run] {config.num_iters} timed iterations...")
+    nvtx.range_push(f"measure::{config.model_name}")
     latencies_ms: List[float] = []
 
     if device.type == "cuda":
@@ -155,6 +159,7 @@ def run_single_model(config: SingleModelConfig,
     if device.type == "cuda":
         torch.cuda.synchronize()
     end_time = time.perf_counter()
+    nvtx.range_pop()
 
     # Sync timed loop
     if barrier is not None:
