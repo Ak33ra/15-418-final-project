@@ -1,4 +1,4 @@
-experiment_name: "bert_deberta"
+experiment_name: "bert_roberta"
 mps: True
 sleep_duration: 120
 device: "cuda"
@@ -11,8 +11,8 @@ tenants:
     num_iters: 100
     num_warmup: 10
 
-  - model_name: "microsoft/deberta-v3-large"
-    name: "deberta_v3_large"
+  - model_name: "roberta-large"
+    name: "roberta_large"
     batch_size: 8
     seq_len: 128
     num_iters: 100

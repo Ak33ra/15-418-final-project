@@ -1,25 +1,25 @@
-experiment_name: "3_deberta_1_llama"
+experiment_name: "3_roberta_1_llama"
 mps: True
 sleep_duration: 120
 device: "cuda"
 
 tenants:
-  - model_name: "microsoft/deberta-v3-large"
-    name: "deberta_v3_large_1"
+  - model_name: "roberta-large"
+    name: "roberta_large_1"
     batch_size: 8
     seq_len: 128
     num_iters: 100
     num_warmup: 10
 
-  - model_name: "microsoft/deberta-v3-large"
-    name: "deberta_v3_large_2"
+  - model_name: "roberta-large"
+    name: "roberta_large_2"
     batch_size: 8
     seq_len: 128
     num_iters: 100
     num_warmup: 10
 
-  - model_name: "microsoft/deberta-v3-large"
-    name: "deberta_v3_large_3"
+  - model_name: "roberta-large"
+    name: "roberta_large_3"
     batch_size: 8
     seq_len: 128
     num_iters: 100

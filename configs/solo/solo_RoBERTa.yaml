@@ -1,8 +1,8 @@
-experiment_name: "solo_deBERTa"
+experiment_name: "solo_RoBERTa"
 
 single_model:
-  model_name: "microsoft/deberta-v3-large"
-  name: "DeBERTa"
+  model_name: "roberta-large"
+  name: "RoBERTa"
   batch_size: 8
   seq_len: 128
   num_warmup: 10

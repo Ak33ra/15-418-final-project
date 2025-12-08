@@ -40,9 +40,13 @@ We are renting an A100 GPU in order to perform our tests. We were planning on te
 
 As explained above we need different models with encoder and decoder architectures, and various parameter sizes. For our decoder models we decided on distilGPT2, llama.3.2, and mistral7b. The models are increasing in size. For the encoders we picked BERT and deBERTa. With deBERTa being the larger model. Our criteria for choosing the models, were varying model sizes which were also able to fit on GPU, which had a memory limit of 40GB. We also needed the models small enough so that we could multiple models on the same GPU. We were not too worried about the specific layers and model architecture other than whether or not the models were encoders or decoders because we did not understand it too that level. Additionally, we were mainly choosing models based off of the parameter count, which should correlate with the amount of computation needed. 
 
-Explain how we run our tests with the timing and nsight
+# Experimentation Setup
+For our testing suite we needed a way to consistently test for latency, throughput, and GPU utilitzation times. Our throughput can be calculated with latency, so we essentially only needed a timing mechanism. The timing tool we decided on was a timer on the GPU. We decided that this was the core metric that we needed because we expected majority of the latency to come from running the LLM. Also, we have a warmup sequence, so kernel is already launched and our batch and sequences are not large anough to stress the CPU to GPU bandwidth. Other then timings we also wanted to look at the GPU utilization and how the jobs were being allocated resources. For this we decided to usse Nvidia Nsight, which allows us to collect data on which kernel is running. Nsight slows down the GPU a lot because it constantly prods the GPU for information, we decided to first test for latency and then GPU utilization. 
 
-Explain the test cases we created the solo models, pairs as baseline, and the different model combinations for experimentation of how multitenancy scales and performs in a variety of cases
+#Test Cases
+We needed a variety of test cases to gather enough data to understand how the GPU reacts and performs under different constraints. We developed our test cases as follows. We first need to establish a baseline performance for latency, so we ran each of the models individually. Then we run each of the models as pairs to also check that the GPU resource sharing and scaling is as expected.
+
+Then we needed to create test cases for our main question of whether the resource sharing is fair and efficient, and what the limitations were. TO do this we came up with the following set of categories to test.
 
 
 ---

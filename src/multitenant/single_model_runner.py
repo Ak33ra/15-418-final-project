@@ -39,7 +39,7 @@ def load_model_and_tokenizer(
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     encoders = {"distilbert-base-uncased",
-                "microsoft/deberta-v3-large"}
+                "roberta-large"}
 
     if model_name in encoders:
         model = AutoModel.from_pretrained(
