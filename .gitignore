@@ -4,3 +4,4 @@
 .venv
 /vendor/
 /vendor/*
+/out/nsys/*/*.sqlite
