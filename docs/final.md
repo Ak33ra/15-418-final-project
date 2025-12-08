@@ -29,15 +29,26 @@ Decoders have an encoding step first, which is memory intensive, but very quick.
 
 As explained above encoders and decoders have different resource demands, so there is potential in different combinations of the models becoming more efficient than other pairings. 
 
+Another aspect to consider is the size of the model, or the number of parameters for each model, which affects the arithmetic intensity. In order to get a broad dataset, we used models of a few different sizes. 
+
+Another important aspect to consider is how to run multiple models on the same GPU. There is the simple method of just using multiple processes and making multiple calls to the GPU. However, this results in heavy overhead for context switching. There are a few different strategies such as Multi-instance GPU by Nvidia, which allows users to partition the resources of the GPU. However, not all GPU's have this resource and is a fairly new tool. Also, it is limited to 7 partitions, which is smaller than what we wanted to test. There is also the decision between CUDA streams and Multi-Process Service(MPS). MPS is available on fewer devices, but it is widely used in datacenters or other multi-process/application situations. Therefore, we decided that performing tests with MPS would be the best concurrency tool to use.
+
 ---
 
 ## Approach
-We tested how running multiple models affected key metrics: latency, throughput, and GPU utilization.
+We are renting an A100 GPU in order to perform our tests. We were planning on testing on other GPUs, but we were limited in the GPUs that we could access, so we limited it to just the A100. Furthermore, the only extra experimentation we would get is if different GPU architectures affected the concurrency results of the multi-tenancy. However, MPS is a software level scheduler, so the results should be similar across devices. 
+
+As explained above we need different models with encoder and decoder architectures, and various parameter sizes. For our decoder models we decided on distilGPT2, llama.3.2, and mistral7b. The models are increasing in size. For the encoders we picked BERT and deBERTa. With deBERTa being the larger model. Our criteria for choosing the models, were varying model sizes which were also able to fit on GPU, which had a memory limit of 40GB. We also needed the models small enough so that we could multiple models on the same GPU. We were not too worried about the specific layers and model architecture other than whether or not the models were encoders or decoders because we did not understand it too that level. Additionally, we were mainly choosing models based off of the parameter count, which should correlate with the amount of computation needed. 
+
+Explain how we run our tests with the timing and nsight
+
+Explain the test cases we created the solo models, pairs as baseline, and the different model combinations for experimentation of how multitenancy scales and performs in a variety of cases
 
 
 ---
 
 ## Results
+Explain the results that we see and if it is expected, unexpected, and what are some possible design principles and such that should be implemented.
 There is a reduciton in throughput and increase in latency as we add more models onto the GPU.
 
 ---
