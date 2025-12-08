@@ -1,0 +1,14 @@
+avg_ms=146.37381591796876
+p50_ms=180.49229431152344
+p90_ms=186.90354919433594
+p95_ms=289.6291809082031
+p99_ms=316.18865966796875
+throughput_tokens_per_s=6995.786736706196
+config_model_name=mistralai/Mistral-7B-Instruct-v0.2
+config_batch_size=8
+config_seq_len=128
+config_num_warmup=10
+config_num_iters=100
+config_device=cuda
+config_out_dir=data/all_models/mistral7b
+config_tag=mistral7b

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CONFIG_DIR="configs/multitenants"
+CONFIG_DIR="configs/multitenant"
 
 echo "Running all multitenant configs in: $CONFIG_DIR"
 echo

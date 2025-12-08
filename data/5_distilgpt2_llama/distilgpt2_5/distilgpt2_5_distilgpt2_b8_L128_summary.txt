@@ -1,0 +1,14 @@
+avg_ms=18.52024821281433
+p50_ms=18.744319915771484
+p90_ms=18.930688858032227
+p95_ms=18.952192306518555
+p99_ms=19.131391525268555
+throughput_tokens_per_s=55290.8356428768
+config_model_name=distilgpt2
+config_batch_size=8
+config_seq_len=128
+config_num_warmup=10
+config_num_iters=100
+config_device=cuda
+config_out_dir=data/5_distilgpt2_llama/distilgpt2_5
+config_tag=distilgpt2_5

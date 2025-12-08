@@ -1,0 +1,14 @@
+avg_ms=22.390333366394042
+p50_ms=23.07686424255371
+p90_ms=24.74291229248047
+p95_ms=24.853504180908203
+p99_ms=24.997888565063477
+throughput_tokens_per_s=45734.0220551131
+config_model_name=roberta-large
+config_batch_size=8
+config_seq_len=128
+config_num_warmup=10
+config_num_iters=100
+config_device=cuda
+config_out_dir=data/all_models/roberta_large
+config_tag=roberta_large

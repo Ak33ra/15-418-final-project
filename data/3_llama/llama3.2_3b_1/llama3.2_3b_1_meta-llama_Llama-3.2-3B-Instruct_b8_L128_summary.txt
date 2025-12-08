@@ -1,0 +1,14 @@
+avg_ms=136.49711013793944
+p50_ms=136.59852600097656
+p90_ms=138.071044921875
+p95_ms=138.43865966796875
+p99_ms=139.22508239746094
+throughput_tokens_per_s=7501.990327598727
+config_model_name=meta-llama/Llama-3.2-3B-Instruct
+config_batch_size=8
+config_seq_len=128
+config_num_warmup=10
+config_num_iters=100
+config_device=cuda
+config_out_dir=data/3_llama/llama3.2_3b_1
+config_tag=llama3.2_3b_1

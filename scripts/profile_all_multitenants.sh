@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CONFIG_DIR="configs/multitenants"
+CONFIG_DIR="configs/multitenant"
 
 echo "Running NSYS profiling for all multitenant configs..."
 echo
@@ -34,7 +34,7 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
         -o "$OUT_DIR"/"$experiment_name" \
         --trace=cuda,nvtx,osrt \
         python scripts/bench_multitenants.py \
-            --config "$cfg_name" \
+            --config "$CONFIG_DIR"/"$cfg_name" \
             --no-save true \
             --verbose false
 
