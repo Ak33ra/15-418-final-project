@@ -40,10 +40,12 @@ def load_model_and_tokenizer(
     if model_name == "distilbert-base-uncased":
         model = AutoModel.from_pretrained(
             model_name,
-            dtype=torch.float16,
+            torch_dtype=torch.float16
         )
     else:
-        model = AutoModelForCausalLM.from_pretrained(model_name)
+        model = AutoModelForCausalLM.from_pretrained(
+            model_name,
+            torch_dtype=torch.float16)
 
     model.to(device)
     model.eval()

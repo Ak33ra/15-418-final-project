@@ -10,7 +10,7 @@ tenants:
     name: "name shorthand or same as above" # Name of this model's directory in the output data
     batch_size: 16
     seq_len: 128
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
 
   # If multiple tenants are the same model, ensure the name fields are different
@@ -20,12 +20,12 @@ tenants:
     name: "mistral7b_1"
     batch_size: 8
     seq_len: 512
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
 
   - model_name: "mistralai/Mistral-7B-Instuct-v0.2"
     name: "mistral7b_2"
     batch_size: 8
     seq_len: 512
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10

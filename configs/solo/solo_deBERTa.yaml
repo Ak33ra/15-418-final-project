@@ -1,4 +1,4 @@
-experiment_name: "solo_deBERT"
+experiment_name: "solo_deBERTa"
 
 single_model:
   model_name: "microsoft/deberta-v3-large"

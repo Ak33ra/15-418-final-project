@@ -8,33 +8,33 @@ tenants:
     name: "distilgpt2"
     batch_size: 8
     seq_len: 128
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
 
   - model_name: "distilbert-base-uncased"
     name: "distilbert"
     batch_size: 8
     seq_len: 128
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
 
   - model_name: "microsoft/deberta-v3-large"
     name: "deberta_v3_large"
     batch_size: 8
     seq_len: 128
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
 
   - model_name: "meta-llama/Llama-3.2-3B-Instruct"
     name: "llama3.2_3b"
     batch_size: 8
     seq_len: 128
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
 
   - model_name: "mistralai/Mistral-7B-Instruct-v0.2"
     name: "mistral7b"
     batch_size: 8
     seq_len: 128
-    num_iters: 200
+    num_iters: 100
     num_warmup: 10
