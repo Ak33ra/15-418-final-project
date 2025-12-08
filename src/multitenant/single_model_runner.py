@@ -37,15 +37,18 @@ def load_model_and_tokenizer(
     """
     print(f"[load] Loading model '{model_name}' on {device}...")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    if model_name == "distilbert-base-uncased":
+
+    encoders = {"distilbert-base-uncased",
+                "microsoft/deberta-v3-large"}
+
+    if model_name in encoders:
         model = AutoModel.from_pretrained(
             model_name,
-            torch_dtype=torch.float16
-        )
+            dtype=torch.float16)
     else:
         model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            torch_dtype=torch.float16)
+            dtype=torch.float16)
 
     model.to(device)
     model.eval()

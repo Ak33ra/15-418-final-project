@@ -10,4 +10,4 @@ matplotlib
 seaborn
 pandas
 tqdm
-
+protobuf

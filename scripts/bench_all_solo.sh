@@ -13,7 +13,7 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
     cfg_name="$(basename "$cfg")"
 
     echo "==> Running config: $cfg_name"
-    ./scripts/bench_single_model.py --config "$cfg_name" --verbose False
+    ./scripts/bench_single_model.py --config "$CONFIG_DIR"/"$cfg_name" --verbose False
     echo
 done
 
