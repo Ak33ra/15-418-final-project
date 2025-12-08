@@ -1,0 +1,14 @@
+avg_ms=2.90422785282135
+p50_ms=2.722815990447998
+p90_ms=3.4590721130371094
+p95_ms=4.257791996002197
+p99_ms=4.633600234985352
+throughput_tokens_per_s=352589.4151194858
+config_model_name=distilbert-base-uncased
+config_batch_size=8
+config_seq_len=128
+config_num_warmup=10
+config_num_iters=100
+config_device=cuda
+config_out_dir=data/solo_distilBERT/distilbert
+config_tag=distilbert

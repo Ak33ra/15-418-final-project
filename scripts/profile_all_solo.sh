@@ -13,7 +13,9 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
 
     # ---- Extract experiment_name from YAML ----
     # Looks for a line like: experiment_name: something
-    experiment_name=$(grep -E '^experiment_name:' "$cfg" | awk '{print $2}')
+    experiment_name=$(grep -E '^experiment_name:' "$cfg" \
+        | awk '{print $2}' \
+        | tr -d '"')
     if [ -z "$experiment_name" ]; then
         echo "[ERROR] No experiment_name found in $cfg"
         exit 1
@@ -29,10 +31,10 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
 
     # ---- Run NSYS ----
     nsys profile \
-        -o "$experiment_name" \
+        -o "$OUT_DIR"/"$experiment_name" \
         --trace=cuda,nvtx,osrt \
         python scripts/bench_single_model.py \
-            --config "$cfg_name" \
+            --config "$CONFIG_DIR"/"$cfg_name" \
             --no-save true \
             --verbose false
 
