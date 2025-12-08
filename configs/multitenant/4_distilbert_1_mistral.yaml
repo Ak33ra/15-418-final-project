@@ -1,0 +1,40 @@
+experiment_name: "4_distilbert_1_mistral"
+mps: True
+sleep_duration: 120
+device: "cuda"
+
+tenants:
+  - model_name: "distilbert-base-uncased"
+    name: "distilbert_1"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 100
+    num_warmup: 10
+
+  - model_name: "distilbert-base-uncased"
+    name: "distilbert_2"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 100
+    num_warmup: 10
+
+  - model_name: "distilbert-base-uncased"
+    name: "distilbert_3"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 100
+    num_warmup: 10
+
+  - model_name: "distilbert-base-uncased"
+    name: "distilbert_4"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 100
+    num_warmup: 10
+
+  - model_name: "mistralai/Mistral-7B-Instruct-v0.2"
+    name: "mistral7b"
+    batch_size: 8
+    seq_len: 128
+    num_iters: 100
+    num_warmup: 10
