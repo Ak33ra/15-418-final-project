@@ -24,7 +24,7 @@ Alternatively to conda, you can install the env using `pip install -r requiremen
 3. Perform desired benchmarks
 
 ## Running benchmarks
-Run `./scripts/bench_all_multitenants.sh` to run all configs in `configs/multitenants/`.
+Run `./scripts/bench_all_multitenants.sh` to run all configs in `configs/multitenant/`.
 
 Similarly, run `./scripts/bench_all_solo.sh` to generate solo baselines.
 
@@ -50,9 +50,9 @@ https://apxml.com/courses/quantized-llm-deployment/chapter-3-performance-evaluat
 
 Store experiment parameters (e.g. warmup, experiment name, number of iterations) in YAML config files for easier running and reproductibility.
 
-See `configs/solo/solo_template.yaml` for the expected format when benchmarking an individual model.
+See `configs/solo_template.yaml` for the expected format when benchmarking an individual model.
 
-See `configs/multitenant/multitenant_template.yaml` for the expected format of a multitenant experiment.
+See `configs/multitenant_template.yaml` for the expected format of a multitenant experiment.
 
 ## Data Format
 
@@ -76,5 +76,4 @@ In the data analysis script, the config file or experiment folder should be pass
 
 ## TODO
 
-Evaluate usefulnes of Nsight, either integrate into experiment script or not.
-Make a large script to run all experiments. Afterwards, run it on rented GPU to get all needed experiments out of the way.
+Comprehensive analysis, write final report.
