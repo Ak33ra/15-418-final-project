@@ -18,10 +18,24 @@ Install it and run `micromamba env create -f environment.yml`.
 
 Alternatively to conda, you can install the env using `pip install -r requirements.txt`.
 
-## Running on Rented GPUs
+## Setup on Rented GPUs
 1. `chmod +x scripts/*`
 2. Run `./scripts/pip_setup.sh` to install necessary packages
 3. Perform desired benchmarks
+
+## Running benchmarks
+Run `./scripts/bench_all_multitenants.sh` to run all configs in `configs/multitenants/`.
+
+Similarly, run `./scripts/bench_all_solo.sh` to generate solo baselines.
+
+Data is saved in the `data` directory, with the format described below.
+
+It should be noted that NVIDIA MPS is used for the multitenant experiments by default. This requires root privileges to run. You can disable MPS by setting `mps: false` in the desired config file.
+
+## Using Nsight
+Install the correct distribution for your platform to a user-writable directory (works if you don't have root privileges). If on Linux, you can use `/scripts/nsys_setup.sh` to install from a `.deb` file. Add nsys to PATH as described in the output.
+
+Use `nsys profile` or the `/scripts/profile_*.sh` scripts to examine how each experiment runs on your GPU. Outputs are in `/out/nsys/` by default.
 
 ## Pushing from other devices
 Use personal access token
