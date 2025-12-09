@@ -48,7 +48,15 @@ We needed a variety of test cases to gather enough data to understand how the GP
 
 Then we needed to create test cases for our main question of whether the resource sharing is fair and efficient, and what the limitations were. To do this we came up with the following set of categories to test.
 
-We first ran a baseline test of each model
+We first ran a baseline test of each model so that we have a relative metric to compare to for when we combine various models.
+
+Then we created tests for each of the following subgroups of encoders only, decoders only, and a combination of both. By doing so we are able to compare how different architectures interact and whether or not there is an impact for performance. 
+
+For the encoder and decoder only groups our goal was to see if there was any biasing of how resources were shared between processes that had the same resource limitations. We were interested in how the scheduler would allocate resources and the fairness along with efficieny limitations. Since the indpendent variable in this case was the model size, we tried different combinations of smaller and larger models to see how they interacted and the resulting performance impacts.
+
+For the combination of encoder and decoder experiments our goal was to see how processes that had different resource bottlenecks would interact. Since encoders were generally limited by memory bandwidth and decoders were limited by compute resources, we were interested in meshing these models together and seeing if they would minimize performance hits. Another variable we were interested in was if how the number of processes along with the different architectures would improve or hurt performance. For example, we were curious if many encoders and a few decoders would have better results than only having decoders.
+
+Based on the criteria and ideas listed above we tried to have a comprehensive coverage of tests to have.
 
 
 ---
