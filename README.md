@@ -21,7 +21,8 @@ Alternatively to conda, you can install the env using `pip install -r requiremen
 ## Setup on Rented GPUs
 1. `chmod +x scripts/*`
 2. Run `./scripts/pip_setup.sh` to install necessary packages
-3. Perform desired benchmarks
+3. `source .venv/bin/activate`
+4. Perform desired benchmarks
 
 ## Running benchmarks
 Run `./scripts/bench_all_multitenants.sh` to run all configs in `configs/multitenant/`.
