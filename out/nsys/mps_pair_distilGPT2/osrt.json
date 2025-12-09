@@ -1,0 +1,548 @@
+
+NOTICE: Existing SQLite export found: ./out/nsys/mps_pair_distilGPT2//mps_pair_distilGPT2.sqlite
+        It is assumed file was previously exported from: ./out/nsys/mps_pair_distilGPT2//mps_pair_distilGPT2.nsys-rep
+        Consider using --force-export=true if needed.
+
+Processing [./out/nsys/mps_pair_distilGPT2//mps_pair_distilGPT2.sqlite] with [/home/export/avandegr/15-418-final-project/vendor/nsight-systems/opt/nvidia/nsight-systems-cli/2025.6.1/target-linux-x64/reports/osrt_sum.py]... 
+[
+  {
+    "Time (%)": 34.6,
+    "Total Time (ns)": 10037243751,
+    "Num Calls": 18929,
+    "Avg (ns)": 530257.5,
+    "Med (ns)": 2710.0,
+    "Min (ns)": 1000,
+    "Max (ns)": 9295913131,
+    "StdDev (ns)": 67661259.7,
+    "Name": "read"
+  },
+  {
+    "Time (%)": 30.8,
+    "Total Time (ns)": 8912018118,
+    "Num Calls": 462,
+    "Avg (ns)": 19290082.5,
+    "Med (ns)": 10086760.5,
+    "Min (ns)": 1781,
+    "Max (ns)": 353344907,
+    "StdDev (ns)": 33575195.1,
+    "Name": "poll"
+  },
+  {
+    "Time (%)": 25.1,
+    "Total Time (ns)": 7270909615,
+    "Num Calls": 15,
+    "Avg (ns)": 484727307.7,
+    "Med (ns)": 82523.0,
+    "Min (ns)": 33221,
+    "Max (ns)": 6210086533,
+    "StdDev (ns)": 1605570158.5,
+    "Name": "sem_wait"
+  },
+  {
+    "Time (%)": 5.4,
+    "Total Time (ns)": 1552615908,
+    "Num Calls": 5,
+    "Avg (ns)": 310523181.6,
+    "Med (ns)": 49340876.0,
+    "Min (ns)": 1930,
+    "Max (ns)": 1441345259,
+    "StdDev (ns)": 632562538.7,
+    "Name": "waitpid"
+  },
+  {
+    "Time (%)": 1.7,
+    "Total Time (ns)": 501240175,
+    "Num Calls": 1379,
+    "Avg (ns)": 363480.9,
+    "Med (ns)": 29211.0,
+    "Min (ns)": 1030,
+    "Max (ns)": 19130525,
+    "StdDev (ns)": 1166639.3,
+    "Name": "ioctl"
+  },
+  {
+    "Time (%)": 1.0,
+    "Total Time (ns)": 278905007,
+    "Num Calls": 77294,
+    "Avg (ns)": 3608.4,
+    "Med (ns)": 3050.0,
+    "Min (ns)": 1068,
+    "Max (ns)": 19021876,
+    "StdDev (ns)": 87180.3,
+    "Name": "stat64"
+  },
+  {
+    "Time (%)": 0.6,
+    "Total Time (ns)": 163093614,
+    "Num Calls": 68340,
+    "Avg (ns)": 2386.5,
+    "Med (ns)": 2339.0,
+    "Min (ns)": 1007,
+    "Max (ns)": 27591,
+    "StdDev (ns)": 814.3,
+    "Name": "lstat64"
+  },
+  {
+    "Time (%)": 0.3,
+    "Total Time (ns)": 87114873,
+    "Num Calls": 16981,
+    "Avg (ns)": 5130.1,
+    "Med (ns)": 4990.0,
+    "Min (ns)": 2173,
+    "Max (ns)": 50171,
+    "StdDev (ns)": 1676.8,
+    "Name": "open64"
+  },
+  {
+    "Time (%)": 0.1,
+    "Total Time (ns)": 39545135,
+    "Num Calls": 55,
+    "Avg (ns)": 719002.5,
+    "Med (ns)": 12240.0,
+    "Min (ns)": 4260,
+    "Max (ns)": 23212398,
+    "StdDev (ns)": 3644748.6,
+    "Name": "munmap"
+  },
+  {
+    "Time (%)": 0.1,
+    "Total Time (ns)": 32420769,
+    "Num Calls": 27665,
+    "Avg (ns)": 1171.9,
+    "Med (ns)": 1110.0,
+    "Min (ns)": 1000,
+    "Max (ns)": 77078,
+    "StdDev (ns)": 861.8,
+    "Name": "fstat64"
+  },
+  {
+    "Time (%)": 0.1,
+    "Total Time (ns)": 27783003,
+    "Num Calls": 5379,
+    "Avg (ns)": 5165.1,
+    "Med (ns)": 1309.0,
+    "Min (ns)": 1000,
+    "Max (ns)": 7020377,
+    "StdDev (ns)": 117776.1,
+    "Name": "pthread_cond_signal"
+  },
+  {
+    "Time (%)": 0.1,
+    "Total Time (ns)": 27416346,
+    "Num Calls": 16452,
+    "Avg (ns)": 1666.4,
+    "Med (ns)": 1590.0,
+    "Min (ns)": 1000,
+    "Max (ns)": 40041,
+    "StdDev (ns)": 901.2,
+    "Name": "close"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 12071310,
+    "Num Calls": 406,
+    "Avg (ns)": 29732.3,
+    "Med (ns)": 5925.0,
+    "Min (ns)": 3169,
+    "Max (ns)": 3683136,
+    "StdDev (ns)": 258659.9,
+    "Name": "mmap64"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 10147428,
+    "Num Calls": 2,
+    "Avg (ns)": 5073714.0,
+    "Med (ns)": 5073714.0,
+    "Min (ns)": 5061945,
+    "Max (ns)": 5085483,
+    "StdDev (ns)": 16643.9,
+    "Name": "nanosleep"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 8350118,
+    "Num Calls": 93,
+    "Avg (ns)": 89786.2,
+    "Med (ns)": 80433.0,
+    "Min (ns)": 62272,
+    "Max (ns)": 909686,
+    "StdDev (ns)": 86243.7,
+    "Name": "sleep"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 5049492,
+    "Num Calls": 62,
+    "Avg (ns)": 81443.4,
+    "Med (ns)": 51092.5,
+    "Min (ns)": 28340,
+    "Max (ns)": 373739,
+    "StdDev (ns)": 81705.1,
+    "Name": "pthread_create"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 2533801,
+    "Num Calls": 126,
+    "Avg (ns)": 20109.5,
+    "Med (ns)": 15965.5,
+    "Min (ns)": 1006,
+    "Max (ns)": 108773,
+    "StdDev (ns)": 23077.2,
+    "Name": "fgets"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 1143948,
+    "Num Calls": 22,
+    "Avg (ns)": 51997.6,
+    "Med (ns)": 47423.5,
+    "Min (ns)": 27751,
+    "Max (ns)": 111499,
+    "StdDev (ns)": 19842.7,
+    "Name": "sem_timedwait"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 837074,
+    "Num Calls": 44,
+    "Avg (ns)": 19024.4,
+    "Med (ns)": 9519.5,
+    "Min (ns)": 4080,
+    "Max (ns)": 165463,
+    "StdDev (ns)": 33431.5,
+    "Name": "mmap"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 705081,
+    "Num Calls": 75,
+    "Avg (ns)": 9401.1,
+    "Med (ns)": 8251.0,
+    "Min (ns)": 1021,
+    "Max (ns)": 29611,
+    "StdDev (ns)": 6753.3,
+    "Name": "write"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 646354,
+    "Num Calls": 89,
+    "Avg (ns)": 7262.4,
+    "Med (ns)": 6231.0,
+    "Min (ns)": 2589,
+    "Max (ns)": 33582,
+    "StdDev (ns)": 5241.2,
+    "Name": "fopen"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 249071,
+    "Num Calls": 80,
+    "Avg (ns)": 3113.4,
+    "Med (ns)": 2760.0,
+    "Min (ns)": 1780,
+    "Max (ns)": 23800,
+    "StdDev (ns)": 2467.8,
+    "Name": "fclose"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 242428,
+    "Num Calls": 2,
+    "Avg (ns)": 121214.0,
+    "Med (ns)": 121214.0,
+    "Min (ns)": 111435,
+    "Max (ns)": 130993,
+    "StdDev (ns)": 13829.6,
+    "Name": "pthread_cond_wait"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 200546,
+    "Num Calls": 144,
+    "Avg (ns)": 1392.7,
+    "Med (ns)": 1090.0,
+    "Min (ns)": 1031,
+    "Max (ns)": 29074,
+    "StdDev (ns)": 2344.6,
+    "Name": "sigaction"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 193243,
+    "Num Calls": 30,
+    "Avg (ns)": 6441.4,
+    "Med (ns)": 5490.0,
+    "Min (ns)": 3380,
+    "Max (ns)": 16331,
+    "StdDev (ns)": 3090.8,
+    "Name": "open"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 131332,
+    "Num Calls": 34,
+    "Avg (ns)": 3862.7,
+    "Med (ns)": 2186.5,
+    "Min (ns)": 1012,
+    "Max (ns)": 27970,
+    "StdDev (ns)": 6246.9,
+    "Name": "pthread_cond_broadcast"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 116705,
+    "Num Calls": 16,
+    "Avg (ns)": 7294.1,
+    "Med (ns)": 6390.5,
+    "Min (ns)": 4200,
+    "Max (ns)": 14520,
+    "StdDev (ns)": 2991.9,
+    "Name": "pipe2"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 106384,
+    "Num Calls": 9,
+    "Avg (ns)": 11820.4,
+    "Med (ns)": 15271.0,
+    "Min (ns)": 5631,
+    "Max (ns)": 16330,
+    "StdDev (ns)": 4973.4,
+    "Name": "socket"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 94113,
+    "Num Calls": 19,
+    "Avg (ns)": 4953.3,
+    "Med (ns)": 4539.0,
+    "Min (ns)": 2600,
+    "Max (ns)": 10000,
+    "StdDev (ns)": 2531.1,
+    "Name": "fopen64"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 80462,
+    "Num Calls": 38,
+    "Avg (ns)": 2117.4,
+    "Med (ns)": 1984.0,
+    "Min (ns)": 1450,
+    "Max (ns)": 3630,
+    "StdDev (ns)": 528.4,
+    "Name": "stat"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 80403,
+    "Num Calls": 4,
+    "Avg (ns)": 20100.8,
+    "Med (ns)": 19580.5,
+    "Min (ns)": 12921,
+    "Max (ns)": 28321,
+    "StdDev (ns)": 7524.5,
+    "Name": "connect"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 30608,
+    "Num Calls": 21,
+    "Avg (ns)": 1457.5,
+    "Med (ns)": 1339.0,
+    "Min (ns)": 1030,
+    "Max (ns)": 3370,
+    "StdDev (ns)": 549.5,
+    "Name": "fcntl64"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 30031,
+    "Num Calls": 11,
+    "Avg (ns)": 2730.1,
+    "Med (ns)": 1120.0,
+    "Min (ns)": 1000,
+    "Max (ns)": 17431,
+    "StdDev (ns)": 4902.2,
+    "Name": "putc"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 29858,
+    "Num Calls": 5,
+    "Avg (ns)": 5971.6,
+    "Med (ns)": 7880.0,
+    "Min (ns)": 2471,
+    "Max (ns)": 8649,
+    "StdDev (ns)": 3082.9,
+    "Name": "bind"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 27432,
+    "Num Calls": 10,
+    "Avg (ns)": 2743.2,
+    "Med (ns)": 2715.0,
+    "Min (ns)": 2291,
+    "Max (ns)": 3570,
+    "StdDev (ns)": 418.5,
+    "Name": "statx"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 24432,
+    "Num Calls": 21,
+    "Avg (ns)": 1163.4,
+    "Med (ns)": 1110.0,
+    "Min (ns)": 1000,
+    "Max (ns)": 1570,
+    "StdDev (ns)": 175.6,
+    "Name": "fcntl"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 20840,
+    "Num Calls": 1,
+    "Avg (ns)": 20840.0,
+    "Med (ns)": 20840.0,
+    "Min (ns)": 20840,
+    "Max (ns)": 20840,
+    "StdDev (ns)": 0.0,
+    "Name": "fputs"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 19370,
+    "Num Calls": 1,
+    "Avg (ns)": 19370.0,
+    "Med (ns)": 19370.0,
+    "Min (ns)": 19370,
+    "Max (ns)": 19370,
+    "StdDev (ns)": 0.0,
+    "Name": "flockfile"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 11133,
+    "Num Calls": 9,
+    "Avg (ns)": 1237.0,
+    "Med (ns)": 1220.0,
+    "Min (ns)": 1000,
+    "Max (ns)": 1490,
+    "StdDev (ns)": 153.1,
+    "Name": "fflush"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 11123,
+    "Num Calls": 4,
+    "Avg (ns)": 2780.8,
+    "Med (ns)": 2690.5,
+    "Min (ns)": 2031,
+    "Max (ns)": 3711,
+    "StdDev (ns)": 854.2,
+    "Name": "fwrite"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 3420,
+    "Num Calls": 1,
+    "Avg (ns)": 3420.0,
+    "Med (ns)": 3420.0,
+    "Min (ns)": 3420,
+    "Max (ns)": 3420,
+    "StdDev (ns)": 0.0,
+    "Name": "openat64"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 3340,
+    "Num Calls": 1,
+    "Avg (ns)": 3340.0,
+    "Med (ns)": 3340.0,
+    "Min (ns)": 3340,
+    "Max (ns)": 3340,
+    "StdDev (ns)": 0.0,
+    "Name": "fread"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 3308,
+    "Num Calls": 3,
+    "Avg (ns)": 1102.7,
+    "Med (ns)": 1123.0,
+    "Min (ns)": 1032,
+    "Max (ns)": 1153,
+    "StdDev (ns)": 63.0,
+    "Name": "pthread_mutex_trylock"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 3099,
+    "Num Calls": 2,
+    "Avg (ns)": 1549.5,
+    "Med (ns)": 1549.5,
+    "Min (ns)": 1499,
+    "Max (ns)": 1600,
+    "StdDev (ns)": 71.4,
+    "Name": "getentropy"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 2870,
+    "Num Calls": 1,
+    "Avg (ns)": 2870.0,
+    "Med (ns)": 2870.0,
+    "Min (ns)": 2870,
+    "Max (ns)": 2870,
+    "StdDev (ns)": 0.0,
+    "Name": "fstatat64"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 2600,
+    "Num Calls": 2,
+    "Avg (ns)": 1300.0,
+    "Med (ns)": 1300.0,
+    "Min (ns)": 1240,
+    "Max (ns)": 1360,
+    "StdDev (ns)": 84.9,
+    "Name": "listen"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 2226,
+    "Num Calls": 2,
+    "Avg (ns)": 1113.0,
+    "Med (ns)": 1113.0,
+    "Min (ns)": 1020,
+    "Max (ns)": 1206,
+    "StdDev (ns)": 131.5,
+    "Name": "futex"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 1730,
+    "Num Calls": 1,
+    "Avg (ns)": 1730.0,
+    "Med (ns)": 1730.0,
+    "Min (ns)": 1730,
+    "Max (ns)": 1730,
+    "StdDev (ns)": 0.0,
+    "Name": "getc"
+  },
+  {
+    "Time (%)": 0.0,
+    "Total Time (ns)": 1040,
+    "Num Calls": 1,
+    "Avg (ns)": 1040.0,
+    "Med (ns)": 1040.0,
+    "Min (ns)": 1040,
+    "Max (ns)": 1040,
+    "StdDev (ns)": 0.0,
+    "Name": "dup"
+  }
+]
+

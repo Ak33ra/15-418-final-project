@@ -1,0 +1,33 @@
+
+NOTICE: Existing SQLite export found: ./out/nsys/mps_pair_distilGPT2//mps_pair_distilGPT2.sqlite
+        It is assumed file was previously exported from: ./out/nsys/mps_pair_distilGPT2//mps_pair_distilGPT2.nsys-rep
+        Consider using --force-export=true if needed.
+
+Processing [./out/nsys/mps_pair_distilGPT2//mps_pair_distilGPT2.sqlite] with [/home/export/avandegr/15-418-final-project/vendor/nsight-systems/opt/nvidia/nsight-systems-cli/2025.6.1/target-linux-x64/reports/nvtx_sum.py]... 
+[
+  {
+    "Time (%)": 71.6,
+    "Total Time (ns)": 2047238265,
+    "Instances": 2,
+    "Avg (ns)": 1023619132.5,
+    "Med (ns)": 1023619132.5,
+    "Min (ns)": 1023567458,
+    "Max (ns)": 1023670807,
+    "StdDev (ns)": 73078.8,
+    "Style": "PushPop",
+    "Range": ":measure::distilgpt2"
+  },
+  {
+    "Time (%)": 28.4,
+    "Total Time (ns)": 812923497,
+    "Instances": 2,
+    "Avg (ns)": 406461748.5,
+    "Med (ns)": 406461748.5,
+    "Min (ns)": 406362113,
+    "Max (ns)": 406561384,
+    "StdDev (ns)": 140905.9,
+    "Style": "PushPop",
+    "Range": ":warmup::distilgpt2"
+  }
+]
+
