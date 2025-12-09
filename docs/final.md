@@ -46,7 +46,9 @@ For our testing suite we needed a way to consistently test for latency, throughp
 #Test Cases
 We needed a variety of test cases to gather enough data to understand how the GPU reacts and performs under different constraints. We developed our test cases as follows. We first need to establish a baseline performance for latency, so we ran each of the models individually. Then we run each of the models as pairs to also check that the GPU resource sharing and scaling is as expected.
 
-Then we needed to create test cases for our main question of whether the resource sharing is fair and efficient, and what the limitations were. TO do this we came up with the following set of categories to test.
+Then we needed to create test cases for our main question of whether the resource sharing is fair and efficient, and what the limitations were. To do this we came up with the following set of categories to test.
+
+We first ran a baseline test of each model
 
 
 ---

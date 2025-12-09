@@ -33,6 +33,8 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
     nsys profile \
         -o "$OUT_DIR"/"$experiment_name" \
         --trace=cuda,nvtx,osrt \
+        --gpu-metrics-device=all \
+        --sample=gpu \
         python scripts/bench_single_model.py \
             --config "$CONFIG_DIR"/"$cfg_name" \
             --no-save true \

@@ -54,10 +54,11 @@ echo "[profile] Output prefix: $OUT_PREFIX"
 # -----------------------------
 # Run Nsight Systems
 # -----------------------------
-    #--gpu-metrics-devices=all \
 nsys profile \
     -o "$OUT_PREFIX" \
     --trace=cuda,nvtx,osrt \
+    --gpu-metrics-device=all \
+    --sample=gpu \
     python scripts/bench_multitenants.py \
         --config "$CONFIG" \
         --no-save true \
