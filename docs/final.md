@@ -75,8 +75,9 @@ provide analysis for gpt2. the gpu was not fully utilized by analyzing the kerne
 
 show that adding more models helped to mitigate this wasted time
 after the gpu is full there is little benefit to adding more models and the scaling becomes more linear
+As we can see when we go from the solo gpt2 model running to the pair of gpt2 models running, the decrease in performance is very minimal. Then as we got to 4 and 10 models we can see a much larger increase in the latency. 
 
-there is a bias betweeen the models
+there is a bias betweeen the models 
 From the pair output for distil gpt2 we are able to observe some bias between one model being scheduled in front of the other consistently. We are able to see this as one model has a higher p50 value than the other. The difference is roughly
 
 It is also possible for the scheduling to be more fair in some scenarios such as shown with the distil_bert models. However, there is still a slight preference for one model over the other. the differences could be that one is more compute bound than the other. However, the main reason that this is visible is because the models themselves are small, so being served a little later is much more significant and visible. As we can see for the larger models, there is no evident bias between the models. the bias is not significant, but this depends on the requirements.
