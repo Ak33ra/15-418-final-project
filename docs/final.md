@@ -71,6 +71,19 @@ For our batch requests, we used a torch.synchronize call, so that each process o
 
 ## Results
 We begin with analysis of the distil gpt2 models first. The solo baseline model had an average run time 
+provide analysis for gpt2. the gpu was not fully utilized by analyzing the kernel and gpu utilization time
+
+show that adding more models helped to mitigate this wasted time
+after the gpu is full there is little benefit to adding more models and the scaling becomes more linear
+
+there is a bias betweeen the models
+From the pair output for distil gpt2 we are able to observe some bias between one model being scheduled in front of the other consistently. We are able to see this as one model has a higher p50 value than the other. The difference is roughly
+
+It is also possible for the scheduling to be more fair in some scenarios such as shown with the distil_bert models. However, there is still a slight preference for one model over the other. the differences could be that one is more compute bound than the other. However, the main reason that this is visible is because the models themselves are small, so being served a little later is much more significant and visible. As we can see for the larger models, there is no evident bias between the models. the bias is not significant, but this depends on the requirements.
+
+We can also see the impacts on many small models such as with the experiment with 10 distil gpt2 models.
+
+having encoder and decoder is slightly better than decoder or encoder only.
 
 
 ---
