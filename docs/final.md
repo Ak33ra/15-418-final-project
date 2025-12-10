@@ -56,14 +56,22 @@ For the encoder and decoder only groups our goal was to see if there was any bia
 
 For the combination of encoder and decoder experiments our goal was to see how processes that had different resource bottlenecks would interact. Since encoders were generally limited by memory bandwidth and decoders were limited by compute resources, we were interested in meshing these models together and seeing if they would minimize performance hits. Another variable we were interested in was if how the number of processes along with the different architectures would improve or hurt performance. For example, we were curious if many encoders and a few decoders would have better results than only having decoders.
 
+We also ran our models with FP16 accuracy so that all of the models would be able to fit on the GPU. We could've made some of the smaller models run with FP32, but we decided on FP16 for consistency. It should also have minimal impact on the majority of the analysis of the results. 
+
 Based on the criteria and ideas listed above we tried to have a comprehensive coverage of tests to have.
+
+We also needed to figure out how many iterations and the batch size for each of our experiments. We decided on a constant workload for simplicty and simpler comparisons. The workload was not a factor that we were interested in comparing, nor did we believe it to be a influential for our analsyis. Therefore, we decided a constant batch size of 8 and sequence of 128 tokens in length. We also ran it for 100 total iterations sequentially, so that we would have a large data sample for how the scheduler handles many requests. 
+
+Before we collect any data, we ran 10 warm up iterations so that the cache and GPU frequency are warmed up, so that the GPU starts at a constant perforamnce level.
+
+For our batch requests, we used a torch.synchronize call, so that each process only sends 1 request at a time to the GPU. This way we are replicating how multiple proceses would process one request at a time. This also simplifiess the timing of our program. It is possible that there is extra overhead when multiple jobs are queued, but our experiments with multiple models, should help account for these scenarios. 
 
 
 ---
 
 ## Results
-Explain the results that we see and if it is expected, unexpected, and what are some possible design principles and such that should be implemented.
-There is a reduciton in throughput and increase in latency as we add more models onto the GPU.
+We begin with analysis of the distil gpt2 models first. The solo baseline model had an average run time 
+
 
 ---
 
