@@ -30,7 +30,7 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
     echo
 
     # ---- Run NSYS ----
-    nsys profile \
+    sudo nsys profile \
         -o "$OUT_DIR"/"$experiment_name" \
         --trace=cuda,nvtx,osrt \
         --gpu-metrics-device=all \

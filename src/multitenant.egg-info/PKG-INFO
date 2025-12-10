@@ -25,10 +25,27 @@ Install it and run `micromamba env create -f environment.yml`.
 
 Alternatively to conda, you can install the env using `pip install -r requirements.txt`.
 
-## Running on Rented GPUs
+## Setup on Rented GPUs
 1. `chmod +x scripts/*`
 2. Run `./scripts/pip_setup.sh` to install necessary packages
-3. Perform desired benchmarks
+3. `source .venv/bin/activate`
+4. Perform desired benchmarks
+
+## Running benchmarks
+Run `./scripts/bench_all_multitenants.sh` to run all configs in `configs/multitenant/`.
+
+Similarly, run `./scripts/bench_all_solo.sh` to generate solo baselines.
+
+Data is saved in the `data` directory, with the format described below.
+
+It should be noted that NVIDIA MPS is used for the multitenant experiments by default. This requires root privileges to run. You can disable MPS by setting `mps: false` in the desired config file.
+
+To run the Llama experiments, an authorized Hugging Face token is needed, with approval from Meta. You can request access via Hugging Face here: https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct.
+
+## Using Nsight
+Install the correct distribution for your platform to a user-writable directory (works if you don't have root privileges). If on Linux, you can use `/scripts/nsys_setup.sh` to install from a `.deb` file. Add nsys to PATH as described in the output.
+
+Use `nsys profile` or the `/scripts/profile_*.sh` scripts to examine how each experiment runs on your GPU. Outputs are in `/out/nsys/` by default.
 
 ## Pushing from other devices
 Use personal access token
@@ -43,9 +60,9 @@ https://apxml.com/courses/quantized-llm-deployment/chapter-3-performance-evaluat
 
 Store experiment parameters (e.g. warmup, experiment name, number of iterations) in YAML config files for easier running and reproductibility.
 
-See `configs/solo/solo_template.yaml` for the expected format when benchmarking an individual model.
+See `configs/solo_template.yaml` for the expected format when benchmarking an individual model.
 
-See `configs/multitenant/multitenant_template.yaml` for the expected format of a multitenant experiment.
+See `configs/multitenant_template.yaml` for the expected format of a multitenant experiment.
 
 ## Data Format
 
@@ -69,5 +86,4 @@ In the data analysis script, the config file or experiment folder should be pass
 
 ## TODO
 
-Evaluate usefulnes of Nsight, either integrate into experiment script or not.
-Make a large script to run all experiments. Afterwards, run it on rented GPU to get all needed experiments out of the way.
+Comprehensive analysis, write final report.
