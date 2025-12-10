@@ -30,12 +30,12 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
     echo
 
     # ---- Run NSYS ----
-    sudo nsys profile \
+    sudo /home/ubuntu/15-418-final-project/vendor/nsight-systems/bin/nsys profile \
         -o "$OUT_DIR"/"$experiment_name" \
+        --force-overwrite true \
         --trace=cuda,nvtx,osrt \
-        --gpu-metrics-device=all \
-        --sample=gpu \
-        python scripts/bench_multitenants.py \
+        --gpu-metrics-devices=all \
+        sudo -u ubuntu /home/ubuntu/15-418-final-project/.venv/bin/python scripts/bench_multitenants.py \
             --config "$CONFIG_DIR"/"$cfg_name" \
             --no-save true \
             --verbose false

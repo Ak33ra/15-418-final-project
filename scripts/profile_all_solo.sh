@@ -36,7 +36,7 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
 	--force-overwrite true \
         --trace=cuda,nvtx,osrt \
         --gpu-metrics-devices=all \
-        /home/ubuntu/15-418-final-project/.venv/bin/python scripts/bench_single_model.py \
+        sudo -u ubuntu /home/ubuntu/15-418-final-project/.venv/bin/python scripts/bench_single_model.py \
             --config "$CONFIG_DIR"/"$cfg_name" \
             --no-save true \
             --verbose false
