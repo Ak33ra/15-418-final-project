@@ -30,16 +30,17 @@ for cfg in "$CONFIG_DIR"/*.yaml "$CONFIG_DIR"/*.yml; do
     echo
 
     # ---- Run NSYS ----
-    sudo /home/ubuntu/15-418-final-project/vendor/nsight-systems/bin/nsys profile \
+    sudo HF_HOME=/home/ubuntu/.cache/huggingface \
+    	HUGGINGFACE_HUB_CACHE=/home/ubuntu/.cache/huggingface \
+     	/home/ubuntu/15-418-final-project/vendor/nsight-systems/bin/nsys profile \
         -o "$OUT_DIR"/"$experiment_name" \
         --force-overwrite true \
         --trace=cuda,nvtx,osrt \
         --gpu-metrics-devices=all \
-        sudo -u ubuntu /home/ubuntu/15-418-final-project/.venv/bin/python scripts/bench_multitenants.py \
+        /home/ubuntu/15-418-final-project/.venv/bin/python scripts/bench_multitenants.py \
             --config "$CONFIG_DIR"/"$cfg_name" \
             --no-save true \
             --verbose false
-
     echo
 done
 

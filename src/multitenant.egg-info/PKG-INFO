@@ -40,7 +40,12 @@ Data is saved in the `data` directory, with the format described below.
 
 It should be noted that NVIDIA MPS is used for the multitenant experiments by default. This requires root privileges to run. You can disable MPS by setting `mps: false` in the desired config file.
 
-To run the Llama experiments, an authorized Hugging Face token is needed, with approval from Meta. You can request access via Hugging Face here: https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct.
+To run the Llama experiments, an authorized Hugging Face token is needed, with approval from Meta. You can request access via Hugging Face here: https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct. Additionally, generate a Hugging Face token and place the following in your `.bashrc`:
+
+```bash
+export HF_TOKEN="hf_XXXXXXXX"                  # your token
+export HUGGINGFACE_HUB_TOKEN="$HF_TOKEN"
+```
 
 ## Using Nsight
 Install the correct distribution for your platform to a user-writable directory (works if you don't have root privileges). If on Linux, you can use `/scripts/nsys_setup.sh` to install from a `.deb` file. Add nsys to PATH as described in the output.
