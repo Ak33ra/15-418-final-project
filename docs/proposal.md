@@ -6,7 +6,8 @@ title: "Multi Model Tenancy Performance on GPUs"
 [Home](index.html) |
 [Proposal](proposal.html) |
 [Milestone](milestone.html) |
-[Final](final.html)
+[Final](final.html) | 
+[Analysis Notebook Guide](analyzer-guide.html)
 
 # Project Proposal
 
