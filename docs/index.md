@@ -6,7 +6,8 @@ title: "Home"
 [Home](index.html) |
 [Proposal](proposal.html) |
 [Milestone](milestone.html) |
-[Final](final.html)
+[Final](final.html) | 
+[Analysis Notebook Guide](analyzer-guide.html)
 
 # 15-418 Final Project: Multi Model Tenancy Performance on GPUs
 
