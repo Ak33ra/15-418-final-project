@@ -1,3 +1,14 @@
+---
+layout: default
+title: "Analysis Notebook Guide"
+---
+
+[Home](index.html) |
+[Proposal](proposal.html) |
+[Milestone](milestone.html) |
+[Final](final.html) | 
+[Analysis Notebook Guide](analyzer-guide.html)
+
 # Data Analyzer Guide
 
 This guide explains how to use the `DataAnalyzer` class and related functions to load and analyze performance data from multi-tenant GPU experiments.
